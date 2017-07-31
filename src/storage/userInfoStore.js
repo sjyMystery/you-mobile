@@ -61,3 +61,5 @@ export default class userInfoStore {
         this.storage.remove({key: 'userInfo'})
     }
 }
+
+export default user_info_storage = new userInfoStore();
