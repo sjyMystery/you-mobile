@@ -24,7 +24,7 @@
     "react-native": "^0.46.1",
     "react-native-elements": "^0.15.0",
     "react-native-storage": "^0.2.2",
-    "react-native-vector-icons": "^4.2.0",
+    "react-native-vector-icons": "~4.1.1",
     "react-native-router-flux": "4.0.0-beta.15",
     "react-redux": "^5.0.5",
     "native-base": "^2.2.1"

@@ -1,7 +1,7 @@
 import Storage from 'react-native-storage';
 import {AsyncStorage} from 'react-native';
 
-export default class userInfoStore {
+class userInfoStore {
 
     storage: Object;
 
