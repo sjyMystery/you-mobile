@@ -1,7 +1,21 @@
-import React from 'react';
-import {ListView, StyleSheet, Text} from 'react-native';
-export default class ContactList extends React.Component {
-    render() {
-        return <Text>我是s+1，数学都是A</Text>
+import React from 'react'
+
+import {View} from 'react-native'
+import FriendCell from '../Component/FriendCell.js'
+
+export default class ContactList extends React.Component{
+    constructor(props){
+        super(props)
+
+    }
+
+    render()
+    {
+        return (
+            <View>
+                <FriendCell friend_name ='联系人1' />
+                <FriendCell friend_name ='联系人2' />
+            </View>
+        )
     }
 }
