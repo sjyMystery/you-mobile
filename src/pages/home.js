@@ -1,11 +1,17 @@
 import React from 'react'
-import WelcomeText from "react-native/local-cli/templates/HelloNavigation/views/welcome/WelcomeText.android";
 import {Text, StyleSheet, View, Image, Dimensions} from 'react-native';
 import {Tabs, Tab, Icon} from 'react-native-elements'
-import {Actions} from 'react-native-router-flux'
-export default class Home extends React.Component {
-    render() {
+import * as Actions from '../Actions'
+import {connect} from 'react-redux'
 
+class Home extends React.Component {
+    constructor(props) {
+        super(props)
+
+    }
+
+    render() {
+        const {dispatch} = this.props;
         return <View style={styles.container}>
             <Image
                 source={require('../../assets/img/logo1.png')}
@@ -14,7 +20,7 @@ export default class Home extends React.Component {
             <Tabs tabBarStyle={{
                 height: 40,
                 borderTopWidth: 1, borderTopColor: '#ffffff', backgroundColor: '#ffffff'
-            }} tabBarShadowStyle={{backgroudColor: '#ffffff'}}>
+            }}>
                 <Tab
                     titleStyle={{fontWeight: 'bold', fontSize: 10}}
                     selectedTitleStyle={{marginTop: -1, marginBottom: 6}}
@@ -24,7 +30,7 @@ export default class Home extends React.Component {
                         color={'#5e6977'} type="foundation" name='torsos-male-female' size={20}/>}
                     renderSelectedIcon={() => <Icon color={'#6296f9'} name='whatshot' size={30}/>}
                     onPress={() => {
-                        Actions.jump('contactList')
+                        dispatch(Actions.to_chatroom())
                     }}>
                 </Tab>
                 <Tab
@@ -54,3 +60,9 @@ const styles = StyleSheet.create({
         }
     }
 );
+
+select = () => {
+    return {}
+};
+
+export default connect(select)(Home)

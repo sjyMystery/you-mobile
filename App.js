@@ -5,7 +5,8 @@ import {Header, Icon, Button, Right, Left, Body, Title, Drawer, Text, View, Cont
 import Main from './src/pages/main.js'
 
 
-import {Router, Scene} from "react-native-router-flux";
+import {Provider} from 'react-redux'
+import configureStore from './src/storage'
 
 
 //这个是程序的入口
@@ -16,13 +17,21 @@ export default class App extends React.Component {
 
 
     constructor(props) {
-        super(props)
-
+        super(props);
+        this.state = {
+            isLoading: true,
+            store: configureStore(() => {
+                this.setState({isLoading: false})
+            })
+        }
     }
 
     render() {
         return (
-            <Main/>)
+            <Provider store={this.state.store}>
+                <Main/>
+            </Provider>
+        )
     }
 }
 

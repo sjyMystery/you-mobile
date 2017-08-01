@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Image, Platform} from "react-native";
 import {StyleSheet} from 'react-native';
 
+import * as Routes from '../routes'
 
 import {Actions} from 'react-native-router-flux'
 
@@ -74,7 +75,7 @@ class SideBar extends Component {
                         dataArray={datas}
                         renderRow={data =>
                             <ListItem button noBorder onPress={() => {
-                                Actions.replace(data.route)
+                                Actions[data.route]()
                             } }>
                                 <Left>
                                     <Icon active name={data.icon_name} type={data.icon_type}
