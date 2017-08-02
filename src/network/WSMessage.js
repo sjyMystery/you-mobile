@@ -1,13 +1,16 @@
 import React from 'react';
 
-export default class wsMessage extends React.Component {
+export default class wsMessage {
 
     ws: Object;
 
-    constructor(props) {
-        super(props);
+    server_url: String;
 
-        this.ws = new Websocket(this.props.server, 'jsonrpc');
+    constructor(ip, port) {
+        this.server_url = "ws://" + ip + ":" + port;
+        console.log('create a Websocket to server:' + this.server_url);
+        this.ws = new Websocket(this.props.server, 'jsonrpc')
+
     }
 
     sendMessage = (params) => {
