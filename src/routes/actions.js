@@ -3,14 +3,14 @@
  */
 import * as Flux from 'react-native-router-flux';
 
-export const Go = (route, params = null) => {
-    Flux.Actions[route](Flux.REPLACE, params)
+export const Go = (route, params = {}) => {
+    Flux.Actions.replace(route, params)
 };
 
-export const Push = (route, params = null) => {
-    Flux.Actions[route](Flux.PUSH, params)
+export const Push = (route, params = {}) => {
+    Flux.Actions.push(route, params)
 };
 
-export const Pop = (route, params = null) => {
-    Flux.Actions[route](Flux.POP, params)
+export const Pop = (route, params = {}) => {
+    Flux.Actions.pop(route, params)
 };

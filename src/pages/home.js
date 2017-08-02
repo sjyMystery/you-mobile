@@ -3,6 +3,7 @@ import {Text, StyleSheet, View, Image, Dimensions} from 'react-native';
 import {Tabs, Tab, Icon} from 'react-native-elements'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
+import {AddSideMenu} from '../Component'
 
 class Home extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class Home extends React.Component {
                         color={'#5e6977'} type="foundation" name='torsos-male-female' size={20}/>}
                     renderSelectedIcon={() => <Icon color={'#6296f9'} name='whatshot' size={30}/>}
                     onPress={() => {
-                        dispatch(Actions.to_chatroom())
+                        dispatch(Actions.to_contactlist())
                     }}>
                 </Tab>
                 <Tab
@@ -64,5 +65,5 @@ const styles = StyleSheet.create({
 select = () => {
     return {}
 };
-
-export default connect(select)(Home)
+var HomeWithSide = AddSideMenu(connect(select)(Home));
+export default HomeWithSide

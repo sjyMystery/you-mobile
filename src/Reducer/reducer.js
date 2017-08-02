@@ -36,7 +36,16 @@ Reducer = (state = initialSate, action) => {
         case ACTION.TO_CHATROOM: {
             return assign(
                 state, {
-                    status: STATE.CHATROOM
+                    status: STATE.CHATROOM,
+                    submitted: false
+                }
+            )
+        }
+        case ACTION.SUBMIT_MSG: {
+            return assign(
+                state, {
+                    status: STATE.CHATROOM,
+                    submitted: true
                 }
             )
         }

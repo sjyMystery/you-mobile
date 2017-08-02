@@ -2,18 +2,21 @@ import React from 'react'
 import {BottomInput, AvoidkeyBoardWarp, MessageList} from '../Component'
 import {StyleSheet, Text, View, KeyboardAvoidingView, Platform} from 'react-native'
 
-export default class ChatRoom extends React.Component {
+import {connect} from 'react-redux'
+
+import * as Actions from '../Actions'
+
+class ChatRoom extends React.Component {
 
     messageList: Object;
+    pushMessage: Object;
 
     constructor() {
         super();
     }
 
     _onSubmitEditing = (msg) => {
-        console.log(msg);
-        this.messageList._userHasBeenInputed = true;
-        this.messageList.pushMessage(msg);
+        Actions.msg.submit(this, msg)
     };
 
     render() {
@@ -21,7 +24,7 @@ export default class ChatRoom extends React.Component {
         //<MessageList/>
         //
         let content = <View style={styles.container}>
-            <MessageList ref={(list) => this.messageList = list}/>
+            <MessageList ref={(list) => this.messageList = list} push_ref={(push) => this.pushMessage = push}/>
             <BottomInput onSubmitEditing={this._onSubmitEditing}/>
         </View>;
         if (Platform.OS === 'ios') {
@@ -51,3 +54,8 @@ const styles = StyleSheet.create({
         }
     }
 );
+select = () => {
+    return {}
+};
+
+export default connect(select)(ChatRoom)

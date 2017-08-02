@@ -1,8 +1,9 @@
 import React from 'react'
 import {Text, TextInput, StyleSheet, View} from 'react-native'
 import {Icon, Button} from 'react-native-elements';
+import {connect} from 'react-redux'
 
-export default class BottomInput extends React.Component {
+class BottomInput extends React.Component {
 
 
     constructor(props) {
@@ -66,3 +67,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2'
     },
 });
+
+select = (state) => {
+    return {}
+};
+
+export default connect(select)(BottomInput, null, null, {withRef: true})

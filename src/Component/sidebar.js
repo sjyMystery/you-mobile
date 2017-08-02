@@ -1,10 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import {Image, Platform} from "react-native";
 import {StyleSheet} from 'react-native';
-
-import * as Routes from '../routes'
-
-import {Actions} from 'react-native-router-flux'
+import * as Actions from '../Actions'
+import {connect} from 'react-redux'
 
 import {
     Content,
@@ -28,28 +26,28 @@ import {Icon} from 'react-native-elements';
 const datas = [
     {
         name: "聊天吧",
-        route: "chatroom",
+        action: Actions.to_chatroom,
         icon_type: "font-awesome",
         icon_name: "comments-o",
         bg: "#C5F442",
     },
     {
         name: "主页",
-        route: "home",
+        action: Actions.to_home,
         icon_name: "circle-o",
         icon_type: "font-awesome",
         bg: "#C5F442",
     },
     {
         name: "登录",
-        route: "login",
+        action: Actions.login,
         icon_name: "circle",
         icon_type: "font-awesome",
         bg: "#C5F442",
     },
 ];
 
-class SideBar extends Component {
+class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,7 +57,7 @@ class SideBar extends Component {
     }
 
     render() {
-
+        console.log("render sidebar");
         return (
             <Container>
 
@@ -75,7 +73,7 @@ class SideBar extends Component {
                         dataArray={datas}
                         renderRow={data =>
                             <ListItem button noBorder onPress={() => {
-                                Actions[data.route]()
+                                this.props.dispatch(data.action())
                             } }>
                                 <Left>
                                     <Icon active name={data.icon_name} type={data.icon_type}
@@ -125,6 +123,5 @@ const styles = StyleSheet.create({
     },
 });
 
-
-export default SideBar;
+export default connect()(SideBar)
 

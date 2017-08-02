@@ -3,7 +3,9 @@ import React from 'react'
 import {ListView} from 'react-native'
 import MessageCell from './MessageCell.js'
 
-export default class MessageList extends React.Component {
+import {connect} from 'react-redux'
+
+class MessageList extends React.Component {
     _userReachEnd = true;
     _userHasBeenInputed = false;
     MessageListView: Object;
@@ -12,6 +14,10 @@ export default class MessageList extends React.Component {
 
     constructor(props) {
         super(props);
+        const {_userHasBeenInputed, push_ref} = this.props;
+        push_ref(this.pushMessage);
+        this._userHasBeenInputed = _userHasBeenInputed;
+        console.log('input:' + this._userHasBeenInputed);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.rows = [{
             rl: 0,
@@ -65,6 +71,7 @@ export default class MessageList extends React.Component {
         this.state = {
             message: this.ds.cloneWithRows(this.rows)
         }
+
     }
 
     renderRow = (message) => {
@@ -126,3 +133,11 @@ export default class MessageList extends React.Component {
         />
     }
 }
+
+select = (state) => {
+    return {
+        _userHasBeenInputed: state.submitted
+    }
+};
+
+export default connect(select)(MessageList, null, null, {withRef: true})
