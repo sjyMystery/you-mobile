@@ -1,5 +1,8 @@
 import * as ACTION from '../Actions/types';
 import * as STATE from './state';
+import {combineReducers} from 'redux'
+import authReducers from './authReducers'
+
 
 const initialSate = {
     status: STATE.INIT,
@@ -11,15 +14,13 @@ const assign = (previous, next) => {
     return Object.assign({}, previous, next)
 };
 
-Reducer = (state = initialSate, action) => {
+mainReducer = (state = initialSate, action) => {
     switch (action.type) {
-        case ACTION.LOG_IN: {
-            return assign(state, {
+        case ACTION.TO_LOGIN:{
+            return assign(state,{
                 status: STATE.LOGIN,
-                success: false
             })
         }
-
         case ACTION.LOG_OUT: {
             return assign(state, {
                 status: STATE.LOGOUT,
@@ -57,5 +58,7 @@ Reducer = (state = initialSate, action) => {
         }
     }
 };
+
+Reducer=combineReducers({mainReducer,authReducers})
 
 export default Reducer

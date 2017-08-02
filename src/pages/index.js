@@ -7,4 +7,5 @@ export ContactList from './ContactList';
 export DefaultPage from './default';
 export Home from './home';
 export Main from './main';
-export Login from './login'
+export Login from './login';
+export Init from './init';

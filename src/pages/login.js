@@ -7,63 +7,24 @@ import {
     View
 } from'react-native';
 import React  from'react';
-import {Actions} from 'react-native-router-flux'
 import {Button} from 'native-base'
 import user_info_storage from '../storage/userInfoStore'
+import * as Actions from '../Actions'
+import {connect} from 'react-redux'
 
 
 console.disableYellowBox = true;
 
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     state = {
         fontsAreLoaded: false,
     };
 
     //在这里处理登录请求
     _onPress = () => {
-        var username = this.state.username;
-        var password = this.state.password;
-        username = '348831271@qq.com';
-        password = 'sujiayi970804';
-        return fetch('http://incidence.cn/csrf_token', {method: 'GET'})
-            .then((response) => {
-                response.json().then(data => {
-                    fetch('http://incidence.cn/mobile/login',
-                        {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': data['csrf_token'],
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(
-                                {
-                                    'username': username,
-                                    'password': password
-                                }
-                            )
-                        }).then((response) => {
-                        console.log(response);
-                        response.json().then(data => {
-                            if (data['status'] == 1) {
-                                console.log('login!');
-                                Actions.replace('chatroom');
-                                user_info_storage.save(username, data['token']);
-                                //这个地方就登录成功了，处理TOKEN并存下来
-                            }
-                            else {
-                                console.log('login failed!');
-                                //这个地方登录就失败了，
-                            }
-                        })
-                    })
-                        .catch((error) => console.error(error))
-                })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            });
+        const {dispatch} =this.props
+        dispatch(Actions.auth.login(this.state.username,this.state.password))
     };
 
     async componentWillMount() {
@@ -208,3 +169,5 @@ const styles = StyleSheet.create({
         textAlign: 'right',
     }
 });
+
+export default connect()(Login)

@@ -21,57 +21,22 @@ class MessageList extends React.Component {
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.rows = [{
             rl: 0,
-            content: '测试消息1',
+            content: 'Hi Mike',
             avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
         }, {
-            rl: 0,
-            content: '测试消息2',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息3',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息4',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息5',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息6',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 1,
-            content: '测试消息7',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息8',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 1,
-            content: '测试消息9',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息10',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息10',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-            rl: 0,
-            content: '测试消息10',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }];
+                rl: 1,
+                content: 'Hi Nathaniel',
+                avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
+            }];
         this.state = {
             message: this.ds.cloneWithRows(this.rows)
         }
 
+    }
+
+    shouldComponentUpdate(nextProps,nextState){
+        console.log('input:' + this._userHasBeenInputed)
+        return true
     }
 
     renderRow = (message) => {

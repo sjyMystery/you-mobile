@@ -40,7 +40,7 @@ const datas = [
     },
     {
         name: "登录",
-        action: Actions.login,
+        action: Actions.to_login,
         icon_name: "circle",
         icon_type: "font-awesome",
         bg: "#C5F442",
@@ -57,7 +57,6 @@ class SideBar extends React.Component {
     }
 
     render() {
-        console.log("render sidebar");
         return (
             <Container>
 
