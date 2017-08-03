@@ -1,4 +1,5 @@
 import React from 'react';
+import * as codes from '../codes';
 
 export default class wsMessage {
 
@@ -6,10 +7,11 @@ export default class wsMessage {
 
     server_url: String;
 
-    constructor(ip, port) {
-        this.server_url = "ws://" + ip + ":" + port;
+	constructor(host , port)
+	{
+		this.server_url = "ws://" + host + ":" + port;
         console.log('create a Websocket to server:' + this.server_url);
-        this.ws = new Websocket(this.props.server, 'jsonrpc')
+		this.ws = new Websocket(this.server_url , 'jsonrpc')
 
     }
 
@@ -22,6 +24,24 @@ export default class wsMessage {
         var buff = JSON.stringify(data);
         this.ws.send(buff)
     };
+
+	sendChatMessage = (msg) =>
+	{
+		this.sendMessage({
+			protocol : codes.protocol.SEND_MSG ,
+			message : msg ,
+			remote : ''
+		})
+	};
+
+	sendLoginToken = (username , token) =>
+	{
+		this.sendMessage({
+			protocol : codes.protocol.CHECK_IN ,
+			username : userName ,
+			token : token
+		})
+	};
 
 
     render() {

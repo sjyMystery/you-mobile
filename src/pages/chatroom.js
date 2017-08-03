@@ -54,8 +54,11 @@ const styles = StyleSheet.create({
         }
     }
 );
-select = () => {
-    return {}
+select       = (state) =>
+{
+	return {
+		connection : state.connection
+	}
 };
 
 export default connect(select)(ChatRoom)

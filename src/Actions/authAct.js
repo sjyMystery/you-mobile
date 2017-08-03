@@ -9,7 +9,7 @@ export const login_failed = (error,msg='') =>{
         success: 0,
         error:error
     }
-}
+};
 export const login_success =(username,token) =>{
 
     console.log('login! with name:'+username+' token:'+token);
@@ -20,7 +20,7 @@ export const login_success =(username,token) =>{
         username:username,
         token:token
     }
-}
+};
 
 export const login = (username,password) => {
     return (dispatch) => {
@@ -30,10 +30,10 @@ export const login = (username,password) => {
 
         //由于这个地方CSRF TOKEN具有一定的时效性，所以我们不做解藕
 
-        fetch('http://incidence.cn/csrf_token', {method: 'GET'})
+		fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})
             .then((response) => {
                 response.json().then(data => {
-                    fetch('http://incidence.cn/mobile/login',
+					fetch('http://incidence.cn:9924/mobile/auth/login' ,
                         {
                             method: 'POST',
                             headers: {
@@ -50,7 +50,8 @@ export const login = (username,password) => {
                         })
                         .then((response) => {
 
-                        console.log("login request response :"+response);
+							console.log("login request response :");
+							console.log(response);
 
                             response.json().then(data => {
                                 if (data['status'] == 1) {

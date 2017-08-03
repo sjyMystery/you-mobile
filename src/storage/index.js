@@ -22,11 +22,11 @@ let createAppStore = applyMiddleware(logger, thunk)(createStore);
 
 
 export default function configureStore(onComplete: () => void) {
-    const store = autoRehydrate()(createAppStore)(Reducer);
-    let opt = {
+	const store = autoRehydrate({log : true})(createAppStore)(Reducer);
+    let opt     = {
         storage: AsyncStorage,
         transform: [],
-        //whitelist: ['userStore'],
+		whitelist : ['username' , 'token']
     };
     persistStore(store, opt, onComplete);
     return store;

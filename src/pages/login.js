@@ -17,17 +17,24 @@ console.disableYellowBox = true;
 
 
 class Login extends React.Component {
-    state = {
-        fontsAreLoaded: false,
-    };
 
     //在这里处理登录请求
     _onPress = () => {
-        const {dispatch} =this.props
+		const {dispatch} = this.props;
         dispatch(Actions.auth.login(this.state.username,this.state.password))
     };
 
-    async componentWillMount() {
+	shouldComponentUpdate(nextProps , nextState)
+	{
+		if(this.props.login == nextProps.login)
+		{
+			return false
+		}
+		else
+		{
+			this.props.dispatch(Actions.to_home(false));
+			return false
+		}
     }
 
 
@@ -169,5 +176,13 @@ const styles = StyleSheet.create({
         textAlign: 'right',
     }
 });
+
+select = (state) =>
+{
+	return {
+		login : state.login ,
+		status : state.status
+	}
+};
 
 export default connect()(Login)

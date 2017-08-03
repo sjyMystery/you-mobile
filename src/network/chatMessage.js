@@ -1,30 +1,31 @@
-import wsMessage from 'WSMessage';
-
-
-import user_info_storage from '../storage/userInfoStore';
-
+import wsMessage from './WSMessage'
 export default class chatMessage extends wsMessage {
 
+	userName: String;
+	token: String;
 
-    constructor(props) {
-        super(props);
+	constructor(host , port , userName , token)
+	{
+		super(host , port);
 
+		this.userName = userName;
+		this.token    = token;
 
         this.ws.onmessage = this.onMessage;
         this.ws.onopen = this.onOpen;
         this.ws.onclose = this.onClose;
     }
 
-    sendLoginToken = () => {
 
-    };
 
     onMessage = (e) => {
-
+		console.log('has msg coming:');
+		console.log(e)
     };
 
     onOpen = () => {
-        this.sendMessage()
+		console.log('chatMessage open,send token for:' + this.userName);
+		this.sendLoginToken(this.userName , this.token)
     };
 
     onClose = () => {

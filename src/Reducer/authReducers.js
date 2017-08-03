@@ -3,8 +3,8 @@ import * as Actions from '../Actions'
 //默认是停留在这个界面等待登录的情况
 const initialLoginState ={
     status:STATE.LOGIN,
-    success:false
-}
+	login : false
+};
 
 
 const assign = (previous, next) => {
@@ -16,19 +16,21 @@ const loginReducer = (state=initialLoginState,action)=>{
     {
         case Actions.LOG_IN:
         {
-            if(success)
+			if(action.success)
             {
                 return assign(state,{
                     status: STATE.LOGIN,
                     username:action.username,
-                    token:action.token
+					token : action.token ,
+					login : true
                 })
             }
             else
             {
                 return assign(state,{
                     status: STATE.LOGIN,
-                    error:action.error
+					error : action.error ,
+					login : false
                     }
                 )
             }
@@ -38,8 +40,8 @@ const loginReducer = (state=initialLoginState,action)=>{
             return state
         }
     }
-}
+};
 
-authReducers =loginReducer
+authReducers = loginReducer;
 
 export default authReducers

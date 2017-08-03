@@ -1,29 +1,40 @@
 import * as TYPES from './types'
 import * as Route from '../routes'
 
-
-export const to_chatroom = () => {
-    Route.Push(Route.CHATROOM);
-    return {
-        type: TYPES.TO_CHATROOM
+export const to_chatroom    = () =>
+{
+	return dispatch =>
+	{
+		Route.Push(Route.CHATROOM);
+		return dispatch({type : TYPES.TO_CHATROOM})
     }
 };
-export const to_home = () => {
-    Route.Go(Route.HOME);
-    return {
-        type: TYPES.TO_HOME
+export const to_home        = (init = false) =>
+{
+	return dispatch =>
+	{
+		Route.Go(Route.HOME);
+		return dispatch({type : TYPES.TO_HOME})
     }
+
 };
 export const to_contactlist = () => {
-    Route.Push(Route.CONTACT_LIST);
-    return {
-        type: TYPES.TO_CONTACTLIST
+	return dispatch =>
+	{
+		Route.Push(Route.CONTACT_LIST);
+		return dispatch({
+			type : TYPES.TO_CONTACTLIST
+		})
     }
 };
 
 export const to_login =()=>{
-    Route.Push(Route.LOGIN)
-    return {
-        type: TYPES.TO_LOGIN
+
+	return (dispatch) =>
+	{
+		Route.Go(Route.LOGIN);
+		return dispatch({type : TYPES.TO_LOGIN})
     }
 };
+
+

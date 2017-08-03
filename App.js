@@ -1,10 +1,6 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Header, Icon, Button, Right, Left, Body, Title, Drawer, Text, View, Container} from 'native-base';
-
-import Main from './src/pages/main.js'
-
-
+import {Root} from './src/routes'
+import * as Actions from './src/Actions'
 import {Provider} from 'react-redux'
 import configureStore from './src/storage'
 
@@ -19,9 +15,8 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
             store: configureStore(() => {
-                this.setState({isLoading: false})
+				this.state.store.dispatch(Actions.entry())
             })
         }
     }
@@ -29,11 +24,8 @@ export default class App extends React.Component {
     render() {
         return (
             <Provider store={this.state.store}>
-                <Main/>
+                <Root store={this.state.store} dispatch={this.state.store.dispatch}/>
             </Provider>
         )
     }
 }
-
-const styles = StyleSheet.create(
-);
