@@ -4,6 +4,7 @@ import {StyleSheet} from 'react-native';
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 
+
 import {
     Content,
     Text,
@@ -22,32 +23,32 @@ import {
 
 import {Icon} from 'react-native-elements';
 
+class SideBar extends React.Component
+{
 
-const datas = [
-    {
-        name: "聊天吧",
-        action: Actions.to_chatroom,
-        icon_type: "font-awesome",
-        icon_name: "comments-o",
-        bg: "#C5F442",
-    },
-    {
-        name: "主页",
-        action: Actions.to_home,
-        icon_name: "circle-o",
-        icon_type: "font-awesome",
-        bg: "#C5F442",
-    },
-    {
-        name: "登录",
-        action: Actions.to_login,
-        icon_name: "circle",
-        icon_type: "font-awesome",
-        bg: "#C5F442",
-    },
+	datas = [
+		{
+			name : "聊天吧" ,
+			action : Actions.to_chatroom ,
+			icon_type : "font-awesome" ,
+			icon_name : "comments-o" ,
+			bg : "#C5F442"
+		} ,
+		{
+			name : "主页" ,
+			action : Actions.to_home ,
+			icon_name : "circle-o" ,
+			icon_type : "font-awesome" ,
+			bg : "#C5F442"
+		} ,
+		{
+			name : "登录" ,
+			action : Actions.to_login ,
+			icon_name : "circle" ,
+			icon_type : "font-awesome" ,
+			bg : "#C5F442"
+		}
 ];
-
-class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -69,8 +70,8 @@ class SideBar extends React.Component {
                         <Text style={{fontSize: 40}}>You</Text>
                     </View>
                     <List
-                        dataArray={datas}
-                        renderRow={data =>
+						dataArray={this.datas}
+						renderRow={data =>
                             <ListItem button noBorder onPress={() => {
                                 this.props.dispatch(data.action())
                             } }>

@@ -10,8 +10,7 @@ export default class wsMessage {
 	constructor(host , port)
 	{
 		this.server_url = "ws://" + host + ":" + port;
-        console.log('create a Websocket to server:' + this.server_url);
-		this.ws = new Websocket(this.server_url , 'jsonrpc')
+		this.ws         = new WebSocket(this.server_url , 'jsonrpc')
 
     }
 
@@ -24,6 +23,13 @@ export default class wsMessage {
         var buff = JSON.stringify(data);
         this.ws.send(buff)
     };
+
+	pullChatMessage = () =>
+	{
+		this.sendMessage({
+			protocol : codes.protocol.PULL_MSG
+		})
+	};
 
 	sendChatMessage = (msg) =>
 	{
@@ -38,7 +44,7 @@ export default class wsMessage {
 	{
 		this.sendMessage({
 			protocol : codes.protocol.CHECK_IN ,
-			username : userName ,
+			username : username ,
 			token : token
 		})
 	};

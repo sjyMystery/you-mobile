@@ -25,8 +25,8 @@ export const login_success =(username,token) =>{
 export const login = (username,password) => {
     return (dispatch) => {
         //测试帐号
-        username = '348831271@qq.com';
-        password = 'sujiayi970804';
+		//username = '348831271@qq.com';
+		//password = 'sujiayi970804';
 
         //由于这个地方CSRF TOKEN具有一定的时效性，所以我们不做解藕
 

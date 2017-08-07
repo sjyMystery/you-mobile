@@ -3,18 +3,16 @@ import {chatMessage} from '../network'
 
 export const entry = () =>
 {
-	return {
-		types : TYPE.ENTRY
-	}
+	return (dispatch) => dispatch({type : TYPES.ENTRY})
 };
 
-export const init = () =>
+export const init = (userName , token , pushMessage) =>
 {
 	return (dispatch) =>
 	{
-		let connection = new chatMessage("incidence.cn" , 9924);
+		let connection = new chatMessage("incidence.cn" , 9923 , userName , token , pushMessage);
 		return dispatch({
-			types : TYPES.INIT ,
+			type : TYPES.INIT ,
 			success : true ,
 			connection : connection
 		})

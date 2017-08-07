@@ -22,7 +22,6 @@ const loginReducer = (state=initialLoginState,action)=>{
                     status: STATE.LOGIN,
                     username:action.username,
 					token : action.token ,
-					login : true
                 })
             }
             else
@@ -30,7 +29,6 @@ const loginReducer = (state=initialLoginState,action)=>{
                 return assign(state,{
                     status: STATE.LOGIN,
 					error : action.error ,
-					login : false
                     }
                 )
             }
@@ -42,6 +40,6 @@ const loginReducer = (state=initialLoginState,action)=>{
     }
 };
 
-authReducers = loginReducer;
+authReducer = loginReducer;
 
-export default authReducers
+export default authReducer

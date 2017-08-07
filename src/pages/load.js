@@ -4,40 +4,35 @@ import React from 'react';
 import {AppLoading} from 'expo';
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 class Load extends React.Component
 {
-	constructor(props)
+	constructor(props , context)
 	{
-		super(props);
-		const {dispatch} = props;
-		console.log("in constuctor" + this.props.loaded);
-		dispatch(Actions.load())
+		super(props , context);
 	}
 
-	componentWillUpdate(nextPropsnextState)
+	componentDidMount()
 	{
-		console.log('update load')
+		this.props.load()
 	}
-
 	shouldComponentUpdate(nextProps , nextState)
 	{
-
-		console.log('update login with:current' + this.props.loaded + ' and then :' + nextProps.loaded);
-		if(nextProps.loaded == props.loaded)
+		if(nextProps.loaded == this.props.loaded)
 		{
 			return false
 		}
 		else
 		{
-			if(nextProps.login)
+			if(nextProps.token != undefined)
 			{
-				this.props.dispatch(Actions.init());
-				this.props.dispatch(Actions.to_home())
+				this.props.init(nextProps.username , nextProps.token);
+				this.props.to_home()
 			}
 			else
 			{
-				this.props.dispatch(Actions.to_login())
+				this.props.to_login()
 			}
 			return false
 		}
@@ -45,19 +40,30 @@ class Load extends React.Component
 
 	render()
 	{
-
+		console.log("render here");
 		return (
 			<AppLoading/>
 		);
 	}
 }
 
-select = (state) =>
+mapStateToProps    = (state , ownProps) =>
 {
+	console.log('map state to props' , state , 'ownProps' , ownProps);
 	return {
-		loaded : state.loaded ,
-		login : state.login
+		loaded : state.main.loaded ,
+		username : state.auth.username ,
+		token : state.auth.token
 	}
 };
+mapDispatchToProps = (dispatch) =>
+{
+	return bindActionCreators({
+		load : Actions.load ,
+		init : Actions.init ,
+		to_home : Actions.to_home ,
+		to_login : Actions.to_login
+	} , dispatch)
+};
 
-export default connect(select)(Load)
+export default connect(mapStateToProps , mapDispatchToProps)(Load)

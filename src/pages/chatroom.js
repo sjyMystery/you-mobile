@@ -1,6 +1,7 @@
 import React from 'react'
 import {BottomInput, AvoidkeyBoardWarp, MessageList} from '../Component'
 import {StyleSheet, Text, View, KeyboardAvoidingView, Platform} from 'react-native'
+import {bindActionCreators} from 'redux'
 
 import {connect} from 'react-redux'
 
@@ -8,24 +9,18 @@ import * as Actions from '../Actions'
 
 class ChatRoom extends React.Component {
 
-    messageList: Object;
-    pushMessage: Object;
-
     constructor() {
         super();
     }
 
-    _onSubmitEditing = (msg) => {
-        Actions.msg.submit(this, msg)
-    };
 
     render() {
         //
         //<MessageList/>
         //
         let content = <View style={styles.container}>
-            <MessageList ref={(list) => this.messageList = list} push_ref={(push) => this.pushMessage = push}/>
-            <BottomInput onSubmitEditing={this._onSubmitEditing}/>
+			<MessageList/>
+			<BottomInput connection={this.props.connection}/>
         </View>;
         if (Platform.OS === 'ios') {
             return (
@@ -42,7 +37,7 @@ class ChatRoom extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles     = StyleSheet.create({
         container: {
             flex: 1,
             justifyContent: 'flex-start',
@@ -54,11 +49,18 @@ const styles = StyleSheet.create({
         }
     }
 );
-select       = (state) =>
+select           = (state) =>
 {
 	return {
-		connection : state.connection
+		connection : state.main.connection
 	}
 };
+dispatchFunction = (dispatch) =>
+{
+	return bindActionCreators(
+		{submit : Actions.msg.submit} ,
+		dispatch
+	)
+};
 
-export default connect(select)(ChatRoom)
+export default connect(select , dispatchFunction)(ChatRoom)

@@ -2,7 +2,8 @@ import React from 'react'
 import {Text, TextInput, StyleSheet, View} from 'react-native'
 import {Icon, Button} from 'react-native-elements';
 import {connect} from 'react-redux'
-
+import * as Actions from '../Actions'
+import {bindActionCreators} from 'redux'
 class BottomInput extends React.Component {
 
 
@@ -15,7 +16,7 @@ class BottomInput extends React.Component {
     }
 
     _onPress = () => {
-        this.props.onSubmitEditing(this.state.inputValue);
+		this.props.submit_data(this.props.connection , this.state.inputValue);
         this.setState({inputValue: ''});
     };
 
@@ -71,5 +72,11 @@ const styles = StyleSheet.create({
 select = (state) => {
     return {}
 };
+act    = (dispatch) =>
+{
+	return bindActionCreators({
+		submit_data : Actions.msg.submit
+	} , dispatch)
+};
 
-export default connect(select)(BottomInput, null, null, {withRef: true})
+export default connect(select , act)(BottomInput)

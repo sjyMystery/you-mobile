@@ -9,7 +9,7 @@ export const to_chatroom    = () =>
 		return dispatch({type : TYPES.TO_CHATROOM})
     }
 };
-export const to_home        = (init = false) =>
+export const to_home        = () =>
 {
 	return dispatch =>
 	{

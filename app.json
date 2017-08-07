@@ -1,5 +1,10 @@
 {
   "expo": {
-    "sdkVersion": "19.0.0"
-  }
+    "sdkVersion": "19.0.0",
+    "privacy": "unlisted",
+    "name": "you",
+    "icon": "assets/img/logo1.png"
+  },
+  "privacy": "unlisted",
+  "name": "you"
 }

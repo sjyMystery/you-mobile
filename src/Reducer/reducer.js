@@ -1,8 +1,9 @@
 import * as ACTION from '../Actions/types';
 import * as STATE from './state';
 import {combineReducers} from 'redux'
-import authReducers from './authReducers'
-
+import authReducer from './authReducers'
+import routeReducer from './route'
+import messageReducer from './messageReducer'
 
 const initialSate = {
 	status : STATE.LOAD ,
@@ -47,14 +48,7 @@ mainReducer = (state = initialSate, action) => {
                 }
             )
         }
-        case ACTION.SUBMIT_MSG: {
-            return assign(
-                state, {
-                    status: STATE.CHATROOM,
-                    submitted: true
-                }
-            )
-        }
+
 		case ACTION.LOAD:
 		{
 			return assign(
@@ -86,12 +80,21 @@ mainReducer = (state = initialSate, action) => {
 				)
 			}
         }
+		case ACTION.ENTRY:
+		{
+			return state;
+		}
         default : {
             return state;
         }
     }
 };
 
-Reducer = combineReducers({mainReducer , authReducers});
+Reducer = combineReducers({
+	main : mainReducer ,
+	auth : authReducer ,
+	route : routeReducer ,
+	message : messageReducer
+});
 
 export default Reducer

@@ -20,3 +20,4 @@ export const TO_CONTACTLIST = "TO_CONTACTLIST";
 
 //下面是聊天界面的部分
 export const SUBMIT_MSG = "SUBMIT_MSG";
+export const PUSH_MSG   = "PUSH_MSG";

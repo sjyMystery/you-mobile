@@ -9,34 +9,9 @@ class MessageList extends React.Component {
     _userReachEnd = true;
     _userHasBeenInputed = false;
     MessageListView: Object;
-    ds: Object;
-    rows: Array;
 
     constructor(props) {
         super(props);
-        const {_userHasBeenInputed, push_ref} = this.props;
-        push_ref(this.pushMessage);
-        this._userHasBeenInputed = _userHasBeenInputed;
-        console.log('input:' + this._userHasBeenInputed);
-        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.rows = [{
-            rl: 0,
-            content: 'Hi Mike',
-            avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-        }, {
-                rl: 1,
-                content: 'Hi Nathaniel',
-                avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-            }];
-        this.state = {
-            message: this.ds.cloneWithRows(this.rows)
-        }
-
-    }
-
-    shouldComponentUpdate(nextProps,nextState){
-        console.log('input:' + this._userHasBeenInputed)
-        return true
     }
 
     renderRow = (message) => {
@@ -68,18 +43,9 @@ class MessageList extends React.Component {
         }, this._userHasBeenInputed ? 0 : 130);
     }
 
-    pushMessage = (message) => {
-        this.rows.push({
-            rl: 0,
-            content: message,
-            avatar: ''
-        });
-        this.setState({message: this.ds.cloneWithRows(this.rows)})
-    };
-
     render() {
         return <ListView
-            dataSource={this.state.message}
+            dataSource={this.props.ds}
             renderRow={this.renderRow}
             enableEmptySections={true}
             ref={(reference) => {
@@ -101,8 +67,9 @@ class MessageList extends React.Component {
 
 select = (state) => {
     return {
-        _userHasBeenInputed: state.submitted
+		_userHasBeenInputed : state.message.submitted ,
+		ds : state.message.ds
     }
 };
 
-export default connect(select)(MessageList, null, null, {withRef: true})
+export default connect(select)(MessageList)

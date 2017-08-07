@@ -8,9 +8,9 @@ import {
 } from'react-native';
 import React  from'react';
 import {Button} from 'native-base'
-import user_info_storage from '../storage/userInfoStore'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 
 console.disableYellowBox = true;
@@ -18,21 +18,30 @@ console.disableYellowBox = true;
 
 class Login extends React.Component {
 
+	constructor(props)
+	{
+		super(props);
+		this.state = {
+			username : '' ,
+			password : ''
+		}
+	}
+
     //在这里处理登录请求
     _onPress = () => {
-		const {dispatch} = this.props;
-        dispatch(Actions.auth.login(this.state.username,this.state.password))
+		this.props.Login(this.state.username , this.state.password)
     };
 
 	shouldComponentUpdate(nextProps , nextState)
 	{
-		if(this.props.login == nextProps.login)
+		if(this.props.token == nextProps.token)
 		{
 			return false
 		}
 		else
 		{
-			this.props.dispatch(Actions.to_home(false));
+			this.props.Initialize(nextProps.username , nextProps.token , this.props.pushMessage);
+			this.props.Home();
 			return false
 		}
     }
@@ -177,12 +186,22 @@ const styles = StyleSheet.create({
     }
 });
 
-select = (state) =>
+mapStateToProps    = (state) =>
 {
 	return {
-		login : state.login ,
-		status : state.status
+		token : state.auth.token ,
+		username : state.auth.username ,
+		status : state.main.status
 	}
 };
+mapDispatchToProps = (dispatch) =>
+{
+	return bindActionCreators({
+		Home : Actions.to_home ,
+		Initialize : Actions.init ,
+		Login : Actions.auth.login ,
+		pushMessage : Actions.msg.push
+	} , dispatch);
+};
 
-export default connect()(Login)
+export default connect(mapStateToProps , mapDispatchToProps)(Login)
