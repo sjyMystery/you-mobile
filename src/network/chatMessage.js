@@ -29,7 +29,7 @@ export default class chatMessage extends wsMessage {
 			{
 				if(data.status == 1)
 				{
-					this.pullMessage();
+					this.pullChatMessage();
 				}
 				else
 				{
@@ -39,13 +39,25 @@ export default class chatMessage extends wsMessage {
 			}
 			case codes.protocol.PUSH_MSG:
 			{
-				console.log('we are pushed msg:' , data.message , ' from ' , data.remote);
-				this.pushMessage(data.msg);
+				console.log('we are pushed msg:' , data.message);
+				this.pushMessage(data.message);
+				var message_list = [];
+				for(var key in data.message)
+				{
+					message_list[key] = data.message[key].id
+				}
+				this.sendReciveMessage(message_list);
 				break;
 			}
 			case codes.protocol.PULL_MSG_R:
 			{
-				this.pushMessage(data.msg);
+				this.pushMessage(data.message);
+				var message_list = [];
+				for(var key in data.message)
+				{
+					message_list[key] = data.message[key].id
+				}
+				this.sendReciveMessage(message_list);
 				break;
 			}
 		}

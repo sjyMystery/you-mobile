@@ -30,6 +30,7 @@ messageReducer = (state = initialMessageState , action) =>
 					avatar : 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
 				})
 			}
+			console.log("add message" , action.message);
 
 			var newState = assign(state , {
 				rows : rows ,

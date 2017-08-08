@@ -49,6 +49,16 @@ export default class wsMessage {
 		})
 	};
 
+	sendReciveMessage = (message) =>
+	{
+		this.sendMessage({
+			protocol : codes.protocol.RECIVE_MSG ,
+			message : message
+		})
+	};
+
+
+
 
     render() {
 

@@ -3,7 +3,8 @@ import * as Actions from '../Actions'
 //默认是停留在这个界面等待登录的情况
 const initialLoginState ={
     status:STATE.LOGIN,
-	login : false
+	username : "" ,
+	token : ""
 };
 
 
