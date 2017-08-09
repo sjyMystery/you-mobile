@@ -40,11 +40,11 @@ class BottomInput extends React.Component {
                 }}
             />
             <Button
-                style={styles.sendButton}
-                disabled={!this.state.inputValue}
-                onPress={this._onPress}
-                backgroundColor="#000000"
-                icon={{type: "font-awesome", name: 'rocket', size: 20, backgroundColor: '#ffffff'}}
+				buttonStyle={styles.sendButton}
+				disabledStyle={styles.sendButton}
+				disabled={!this.state.inputValue}
+				onPress={this._onPress}
+				icon={{type: "font-awesome", name: 'rocket', size: 20, backgroundColor: '#ffffff'}}
             >
             </Button>
         </View>)
@@ -55,17 +55,19 @@ const styles = StyleSheet.create({
     inputBar: {
         flex: 1,
         backgroundColor: '#ffffff',
-        padding: 10
+		padding : 0
     },
     sendButton: {
-        height: 43,
-        backgroundColor: '#ff0000'
+		height : 40 ,
+		padding : 0 ,
+		backgroundColor : '#000000'
     },
     bottomToolBar: {
         flexDirection: 'row',
-        alignItems: 'center',
+		alignItems : 'flex-start' ,
+		justifyContent : 'flex-start' ,
         borderTopWidth: 0,
-        backgroundColor: '#f2f2f2'
+		backgroundColor : '#000000'
     },
 });
 

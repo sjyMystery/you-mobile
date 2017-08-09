@@ -3,7 +3,7 @@ import {Text, StyleSheet, View, Image, Dimensions} from 'react-native';
 import {Tabs, Tab, Icon} from 'react-native-elements'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
-import {AddSideMenu} from '../Component'
+import {AddSideMenu , VCard} from '../Component'
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,10 +12,11 @@ class Home extends React.Component {
     }
 
     render() {
+
+		//source={require('../../assets/img/logo1.png')}
         const {dispatch} = this.props;
         return <View style={styles.container}>
-            <Image
-                source={require('../../assets/img/logo1.png')}
+            <VCard
                 style={{height: Dimensions.get('window').height, width: Dimensions.get('window').width}}
             />
             <Tabs tabBarStyle={{
