@@ -28,7 +28,7 @@ class Load extends React.Component
 			if(nextProps.token != "")
 			{
 				this.props.init(nextProps.username , nextProps.token);
-				this.props.to_home()
+				this.props.http_login().then(this.props.to_home , this.props.to_login)
 			}
 			else
 			{
@@ -40,7 +40,6 @@ class Load extends React.Component
 
 	render()
 	{
-		console.log("render here");
 		return (
 			<AppLoading/>
 		);
@@ -62,7 +61,8 @@ mapDispatchToProps = (dispatch) =>
 		load : Actions.load ,
 		init : Actions.init ,
 		to_home : Actions.to_home ,
-		to_login : Actions.to_login
+		to_login : Actions.to_login ,
+		http_login : Actions.auth.http_login
 	} , dispatch)
 };
 

@@ -4,7 +4,7 @@ import View from 'react-native'
 import FriendCell from '../Component/FriendCell.js'
 
 import {List , ListItem , Grid , Row} from 'react-native-elements'
-
+import {GetContactList} from '../network'
 const list = [
 	{
 		name : 'Amy Farha' ,
@@ -19,10 +19,11 @@ const list = [
 ];
 
 export default class ContactList extends React.Component{
-    constructor(props){
-        super(props)
-
-    }
+	constructor(props)
+	{
+		super(props);
+		GetContactList()
+	}
     render()
     {
 		return <List containerStyle={{marginBottom : 20}}>

@@ -4,5 +4,17 @@
 
 export const GetContactList = () =>
 {
-	fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})
+	fetch('http://incidence.cn:9924/contact' , {method : 'GET'}).then((response) =>
+	{
+		console.log(response);
+		response.json().then((data) =>
+			{
+				console.log(data);
+			}
+		)
+	})
+		.catch((error) =>
+		{
+
+		})
 };
