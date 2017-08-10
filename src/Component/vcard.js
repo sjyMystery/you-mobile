@@ -73,10 +73,8 @@ export default class VCard extends React.Component
 				alignItems : 'center'
 			}}>
 				<Text style={{marginTop : 30 , marginLeft : 33 , marginRight : 33}}>
-					我独自走在这悠长，悠长，又悠长的雨巷。
-					我独自走在这悠长，悠长，又悠长的雨巷。
-					我独自走在这悠长，悠长，又悠长的雨巷。
-					我独自走在这悠长，悠长，又悠长的雨巷。
+					This is me.
+					这就是我.
 				</Text>
 			</Row>
 			<Row style={{height : 100}}></Row>

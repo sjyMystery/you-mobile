@@ -40,13 +40,6 @@ class SideBar extends React.Component
 			icon_name : "circle-o" ,
 			icon_type : "font-awesome" ,
 			bg : "#C5F442"
-		} ,
-		{
-			name : "登录" ,
-			action : Actions.to_login ,
-			icon_name : "circle" ,
-			icon_type : "font-awesome" ,
-			bg : "#C5F442"
 		}
 ];
     constructor(props) {
