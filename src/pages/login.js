@@ -30,9 +30,9 @@ class Login extends React.Component {
     //在这里处理登录请求
     _onPress = () => {
 		this.props.Login(this.state.username , this.state.password)
-			.then(() =>
+            .then((data) =>
 				{
-					this.props.Initialize(nextProps.username , nextProps.token , this.props.pushMessage);
+                    this.props.Initialize(data.username, data.token, this.props.pushMessage);
 					this.props.Home();
 				} , () =>
 				{

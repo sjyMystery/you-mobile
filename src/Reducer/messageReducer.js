@@ -59,6 +59,9 @@ messageReducer = (state = initialMessageState , action) =>
 			console.log(rows , newState);
 			return newState;
 		}
+        case ACTION.CONVERT_SESSION: {
+
+        }
 		default:
 		{
 			return state

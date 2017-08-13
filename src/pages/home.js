@@ -12,12 +12,18 @@ class Home extends React.Component {
     }
 
     render() {
-
+        console.log(this.props);
 		//source={require('../../assets/img/logo1.png')}
         const {dispatch} = this.props;
         return <View style={styles.container}>
             <VCard
                 style={{height: Dimensions.get('window').height, width: Dimensions.get('window').width}}
+                name={this.props.profile.name}
+                motto={this.props.profile.motto}
+                gender={this.props.profile.gender}
+                mobile={this.props.profile.mobile}
+                id={this.props.profile.id}
+
             />
             <Tabs tabBarStyle={{
                 height: 40,
@@ -63,8 +69,10 @@ const styles = StyleSheet.create({
     }
 );
 
-select = () => {
-    return {}
+select = (state) => {
+    return {
+        profile: state.profile.home
+    }
 };
 var HomeWithSide = AddSideMenu(connect(select)(Home));
 export default HomeWithSide

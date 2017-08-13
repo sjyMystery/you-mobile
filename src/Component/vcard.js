@@ -35,7 +35,7 @@ export default class VCard extends React.Component
 				justifyContent : 'center' ,
 				flexDirection : 'column' ,
 				alignItems : 'center'
-			}}><Text style={{fontSize : 13}}>No.8888888</Text></Row>
+            }}><Text style={{fontSize: 13}}>No.{this.props.id}</Text></Row>
 			<Row style={{height : 150 , justifyContent : 'center' , flexDirection : 'column' , alignItems : 'center'}}>
 				<Avatar
 					rounded
@@ -52,7 +52,7 @@ export default class VCard extends React.Component
 				justifyContent : 'flex-start' ,
 				flexDirection : 'column' ,
 				alignItems : 'center'
-			}}><Text style={{padding : 10 , fontSize : 33}}>Nathaniel</Text></Row>
+            }}><Text style={{padding: 10, fontSize: 33}}>{this.props.name}</Text></Row>
 			<Row style={{height : 50 , justifyContent : 'center' , flexDirection : 'row' , alignItems : 'center'}}>
 				<Icon
 					name='phone'
@@ -63,7 +63,7 @@ export default class VCard extends React.Component
 					&nbsp;&nbsp;+86&nbsp;&nbsp;
 				</Text>
 				<Text style={{fontSize : 20}}>
-					18000000000
+                    {this.props.mobile}
 				</Text>
 			</Row>
 			<Row style={{
@@ -73,8 +73,7 @@ export default class VCard extends React.Component
 				alignItems : 'center'
 			}}>
 				<Text style={{marginTop : 30 , marginLeft : 33 , marginRight : 33}}>
-					This is me.
-					这就是我.
+                    {this.props.motto}
 				</Text>
 			</Row>
 			<Row style={{height : 100}}></Row>

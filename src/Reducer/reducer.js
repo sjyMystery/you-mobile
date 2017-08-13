@@ -4,6 +4,8 @@ import {combineReducers} from 'redux'
 import authReducer from './authReducers'
 import routeReducer from './route'
 import messageReducer from './messageReducer'
+import contactReducer from './contactReducer'
+import profileReducer from './profileReducer'
 
 const initialSate = {
 	status : STATE.LOAD ,
@@ -94,7 +96,9 @@ Reducer = combineReducers({
 	main : mainReducer ,
 	auth : authReducer ,
 	route : routeReducer ,
-	message : messageReducer
+    message: messageReducer,
+    contact: contactReducer,
+    profile: profileReducer
 });
 
 export default Reducer

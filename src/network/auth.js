@@ -2,6 +2,8 @@ import * as codes from '../codes'
 
 export const login = (username , password) =>
 {
+    username = "348831271@qq.com";
+    password = "sujiayi970804";
 	var p = new Promise(function(resolve , reject)
 	{
 		fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})
@@ -27,8 +29,7 @@ export const login = (username , password) =>
 						.then((response) =>
 						{
 
-							console.log("login request response :");
-							console.log(response);
+                            console.log("login request response :", response);
 
 							response.json().then(data =>
 							{
@@ -38,8 +39,9 @@ export const login = (username , password) =>
 								}
 								else
 								{
+                                    console.log("login,failed", data);
 									//这个地方登录就失败了，
-									reject({error : codes.error.verify_id_failed , message : "TOKEN或用户名错误"})
+                                    reject({error: codes.error.verify_id_failed, message: "用户名或密码错误"})
 								}
 							}).catch((error) => reject({
 								error : codes.error.server_data_invalid ,
@@ -98,7 +100,7 @@ export const http_login = (username , token , success , failed) =>
 							else
 							{
 								//这个地方登录就失败了，
-								failed(codes.error.verify_id_failed , "用户名或者密码错误")
+                                failed(codes.error.verify_id_failed, "用户名或者TOken错误")
 							}
 						}).catch((error) => failed(codes.error.server_data_invalid , '登陆时服务器返回了无效的数据：' + error))
 

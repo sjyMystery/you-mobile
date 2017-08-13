@@ -4,7 +4,7 @@ import View from 'react-native'
 import FriendCell from '../Component/FriendCell.js'
 
 import {List , ListItem , Grid , Row} from 'react-native-elements'
-import {GetContactList} from '../network'
+import {connect} from 'react-redux'
 const list = [
 	{
 		name : 'Amy Farha' ,
@@ -18,25 +18,44 @@ const list = [
 	}
 ];
 
-export default class ContactList extends React.Component{
+class ContactList extends React.Component {
 	constructor(props)
 	{
 		super(props);
-		GetContactList()
+
+    }
+
+    componentWillMount() {
+
 	}
     render()
     {
-		return <List containerStyle={{marginBottom : 20}}>
-			{
-				list.map((l , i) => (
-					<ListItem
-						roundAvatar
-						avatar={{uri : l.avatar_url}}
-						key={i}
-						title={l.name}
-					/>
-				))
-			}
-		</List>
+        var list = this.props.list;
+        if (typeof list.map === 'function') {
+
+            return <List containerStyle={{marginBottom: 20}}>
+                {
+                    list.map((l, i) => (
+						<ListItem
+							roundAvatar
+							avatar={{uri: l.avatar_url}}
+							key={i}
+							title={l.name}
+						/>
+                    ))
+                }
+			</List>
+        }
+        else {
+            return <List containerStyle={{marginBottom: 20}}></List>
+        }
     }
 }
+
+mapStateToProps = (state) => {
+    return {
+        list: state.contact.list
+    }
+};
+
+export default connect(mapStateToProps)(ContactList)

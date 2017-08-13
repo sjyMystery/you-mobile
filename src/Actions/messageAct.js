@@ -16,3 +16,10 @@ export const push   = (msg) =>
 		message : msg
 	}
 };
+
+export const convert = (session) => {
+    return {
+        message: TYPES.CONVERT_SESSION,
+        session: session
+    }
+};

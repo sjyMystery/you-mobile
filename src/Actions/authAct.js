@@ -78,7 +78,7 @@ export const login              = (username,password) => {
 			success = (data) =>
 			{
 				dispatch(login_success(data.username , data.token));
-				resolve()
+                resolve({username: data.username, token: data.token})
 			};
 			auth.login(username , password).then(success , failed)
 		});

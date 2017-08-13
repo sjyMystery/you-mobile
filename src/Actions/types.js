@@ -22,3 +22,8 @@ export const TO_CONTACTLIST = "TO_CONTACTLIST";
 //下面是聊天界面的部分
 export const SUBMIT_MSG = "SUBMIT_MSG";
 export const PUSH_MSG   = "PUSH_MSG";
+
+//更新联系人列表
+export const UPDATE_CONTACT_LIST = "UPDATE_CONTACT_LIST";
+
+export const UPDATE_HOME_PROFILE = "UPDATE_HOME_PROFILE";
