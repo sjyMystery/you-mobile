@@ -5,7 +5,7 @@ import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 import {AddSideMenu , VCard} from '../Component'
 
-import bindActionCreators from 'redux'
+import {bindActionCreators} from 'redux'
 
 class Home extends React.Component {
     constructor(props) {

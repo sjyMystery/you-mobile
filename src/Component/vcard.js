@@ -1,15 +1,15 @@
 import React from 'react'
 import {Grid , Row , Avatar , Card , ListItem , Icon , Col} from 'react-native-elements';
-import {Text} from 'react-native'
+import {View, Text} from 'react-native'
 import * as style from '../style'
 export default class VCard extends React.Component
 {
 	render()
 	{
-		return (<Grid>
-			<Row style={{height : 30}}></Row>
-			<Row style={{height : 50 , flexDirection : 'row' , justifyContent : 'space-between'}}>
-				<Col style={{height : 50 , flexDirection : 'row'}}>
+        return (<View style={{flexDirection: 'column', justifyContent: 'flex-start'}}>
+            <View style={{height: 30}}></View>
+            <View style={{height: 50, flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon
 						style={{marginLeft : 20}}
 						name='qrcode'
@@ -18,8 +18,8 @@ export default class VCard extends React.Component
 						iconStyle={{}}
 						size={40}
 						onPress={() => console.log('hello')}/>
-				</Col>
-				<Col style={{height : 50 , flexDirection : 'row'}}>
+                </View>
+                <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon
 						rounded
 						style={{marginRight : 20}}
@@ -29,15 +29,15 @@ export default class VCard extends React.Component
 						iconStyle={{}}
 						size={30}
 						onPress={() => console.log('hello')}/>
-				</Col>
-			</Row>
-			<Row style={{
+                </View>
+            </View>
+            <View style={{
 				height : 50 ,
 				justifyContent : 'center' ,
 				flexDirection : 'column' ,
 				alignItems : 'center'
-            }}><Text style={{fontSize: 13}}>No.{this.props.id}</Text></Row>
-			<Row style={{height : 150 , justifyContent : 'center' , flexDirection : 'column' , alignItems : 'center'}}>
+            }}><Text style={{fontSize: 13}}>No.{this.props.id}</Text></View>
+            <View style={{height: 150, justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
 				<Avatar
 					rounded
 					xlarge
@@ -47,14 +47,16 @@ export default class VCard extends React.Component
 					activeOpacity={0.7}
 					containerStyle={{flex : 4 , marginTop : 0}}
 				/>
-			</Row>
-			<Row style={{
+            </View>
+            <View style={{
 				height : 100 ,
 				justifyContent : 'flex-start' ,
 				flexDirection : 'column' ,
 				alignItems : 'center'
-            }}><Text style={{padding: 10, fontSize: 33}}>{this.props.name}</Text></Row>
-			<Row style={{height : 50 , justifyContent : 'center' , flexDirection : 'row' , alignItems : 'center'}}>
+            }}>
+                <Text style={{padding: 10, fontSize: 33}}>{this.props.name}</Text>
+            </View>
+            <View style={{height: 50, justifyContent: 'center', flexDirection: 'row', alignItems: 'center'}}>
 				<Icon
 					name='phone'
 					type='font-awesome'
@@ -66,8 +68,8 @@ export default class VCard extends React.Component
 				<Text style={{fontSize : 20}}>
                     {this.props.mobile}
 				</Text>
-			</Row>
-			<Row style={{
+            </View>
+            <View style={{
 				height : 100 ,
 				justifyContent : 'flex-start' ,
 				flexDirection : 'column' ,
@@ -76,16 +78,24 @@ export default class VCard extends React.Component
 				<Text style={{marginTop : 30 , marginLeft : 33 , marginRight : 33}}>
                     {this.props.motto}
 				</Text>
-			</Row>
-			<Row style={{height: 100, flexDirection: 'row', justifyContent: 'center'}}>
-				<Icon
-					size={40}
-					raised
-					name='comments-o'
-					type='font-awesome'
-					color={style.color.mikebluePro}
-					onPress={() => console.log('hello')}/>
-			</Row>
-		</Grid>)
+            </View>
+            <View style={{height: 200, flexDirection: 'row', justifyContent: 'center'}}>
+
+                <View style={{height: 50, flexDirection: 'row'}}>
+                    <Icon
+                        size={40}
+                        raised
+                        reverse
+                        name='comments-o'
+                        type='font-awesome'
+                        underlayColor={style.color.mikeRed}
+                        color={style.color.mikebluePro}
+                        onPress={() => {
+                            console.log('press');
+                            this.props.openChat
+                        }}/>
+                </View>
+            </View>
+        </View>)
 	}
 }
