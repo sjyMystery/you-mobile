@@ -2,8 +2,6 @@ import * as codes from '../codes'
 
 export const login = (username , password) =>
 {
-    username = "348831271@qq.com";
-    password = "sujiayi970804";
 	var p = new Promise(function(resolve , reject)
 	{
 		fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})

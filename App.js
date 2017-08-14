@@ -16,7 +16,7 @@ export default class App extends React.Component {
         super(props);
 		this.store = configureStore(() =>
 		{
-			this.store.dispatch(actions.entry())
+            this.store.dispatch(actions.load())
 		})
     }
 

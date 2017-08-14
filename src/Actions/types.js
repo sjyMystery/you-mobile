@@ -25,5 +25,7 @@ export const PUSH_MSG   = "PUSH_MSG";
 
 //更新联系人列表
 export const UPDATE_CONTACT_LIST = "UPDATE_CONTACT_LIST";
-
+//更新个人资料
 export const UPDATE_HOME_PROFILE = "UPDATE_HOME_PROFILE";
+
+export const OPEN_CHAT = "OPEN_CHAT";

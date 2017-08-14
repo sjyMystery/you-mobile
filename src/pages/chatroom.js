@@ -5,6 +5,8 @@ import {bindActionCreators} from 'redux'
 
 import {connect} from 'react-redux'
 
+import * as style from '../style'
+
 import * as Actions from '../Actions'
 
 class ChatRoom extends React.Component {
@@ -42,7 +44,7 @@ const styles     = StyleSheet.create({
             flex: 1,
             justifyContent: 'flex-start',
             alignItems: 'stretch',
-            backgroundColor: "#f2f2f2"
+            backgroundColor: style.color.whiteGreyPro
         },
         KeyboardAvoidingView: {
             flex: 1

@@ -5,6 +5,8 @@ import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 import {AddSideMenu , VCard} from '../Component'
 
+import bindActionCreators from 'redux'
+
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -23,7 +25,7 @@ class Home extends React.Component {
                 gender={this.props.profile.gender}
                 mobile={this.props.profile.mobile}
                 id={this.props.profile.id}
-
+                openChat={this.props.openChat}
             />
             <Tabs tabBarStyle={{
                 height: 40,
@@ -74,5 +76,11 @@ select = (state) => {
         profile: state.profile.home
     }
 };
-var HomeWithSide = AddSideMenu(connect(select)(Home));
+selectDispatch = (dispatch) => {
+    return bindActionCreators(
+        {openChat: Actions.contact.openChat}, dispatch
+    )
+};
+
+var HomeWithSide = AddSideMenu(connect(select, selectDispatch)(Home));
 export default HomeWithSide

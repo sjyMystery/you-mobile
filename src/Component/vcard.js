@@ -1,6 +1,7 @@
 import React from 'react'
 import {Grid , Row , Avatar , Card , ListItem , Icon , Col} from 'react-native-elements';
 import {Text} from 'react-native'
+import * as style from '../style'
 export default class VCard extends React.Component
 {
 	render()
@@ -76,7 +77,15 @@ export default class VCard extends React.Component
                     {this.props.motto}
 				</Text>
 			</Row>
-			<Row style={{height : 100}}></Row>
+			<Row style={{height: 100, flexDirection: 'row', justifyContent: 'center'}}>
+				<Icon
+					size={40}
+					raised
+					name='comments-o'
+					type='font-awesome'
+					color={style.color.mikebluePro}
+					onPress={() => console.log('hello')}/>
+			</Row>
 		</Grid>)
 	}
 }

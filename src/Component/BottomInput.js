@@ -43,7 +43,6 @@ class BottomInput extends React.Component {
                     this.setState({inputValue: text});
                 }}
                     onSubmitEditing={this._onPress}
-                    placeholder="                        在此输入，长按发语音"
             />
             </Item>
         </View>)

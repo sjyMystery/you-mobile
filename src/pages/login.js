@@ -32,7 +32,7 @@ class Login extends React.Component {
 		this.props.Login(this.state.username , this.state.password)
             .then((data) =>
 				{
-                    this.props.Initialize(data.username, data.token, this.props.pushMessage);
+                    this.props.Initialize(data.username, data.token);
 					this.props.Home();
 				} , () =>
 				{
@@ -199,8 +199,7 @@ mapDispatchToProps = (dispatch) =>
 	return bindActionCreators({
 		Home : Actions.to_home ,
 		Initialize : Actions.init ,
-		Login : Actions.auth.login ,
-		pushMessage : Actions.msg.push
+        Login: Actions.auth.login
 	} , dispatch);
 };
 

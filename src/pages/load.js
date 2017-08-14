@@ -13,12 +13,9 @@ class Load extends React.Component
 		super(props , context);
 	}
 
-	componentDidMount()
-	{
-		this.props.load()
-	}
 	shouldComponentUpdate(nextProps , nextState)
 	{
+        console.log("load");
 		if(nextProps.loaded == this.props.loaded)
 		{
 			return false
@@ -32,6 +29,7 @@ class Load extends React.Component
 			}
 			else
 			{
+                console.log('to_login in UI');
 				this.props.to_login()
 			}
 			return false

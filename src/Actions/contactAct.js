@@ -5,3 +5,10 @@ export const updateList = (list) => {
         dispatch({type: TYPES.UPDATE_CONTACT_LIST, list: list})
     }
 };
+
+export const openChat = (contact) => {
+
+    return dispatch => {
+        dispatch({type: TYPES.OPEN_CHAT, contact: contact})
+    }
+};
