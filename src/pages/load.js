@@ -22,10 +22,9 @@ class Load extends React.Component
 		}
 		else
 		{
-			if(nextProps.token != "")
+            if (nextProps.token != "" && nextProps.token != undefined)
 			{
-				this.props.init(nextProps.username , nextProps.token);
-				this.props.http_login().then(this.props.to_home , this.props.to_login)
+                this.props.http_login(nextProps.username, nextProps.token).then(() => this.props.init(nextProps.username, nextProps.token).then(this.props.to_home), this.props.to_login)
 			}
 			else
 			{

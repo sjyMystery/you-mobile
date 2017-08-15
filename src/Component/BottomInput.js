@@ -17,7 +17,7 @@ class BottomInput extends React.Component {
     }
 
     _onPress = () => {
-		this.props.submit_data(this.props.connection , this.state.inputValue);
+        this.props.submit(this.props.connection, this.state.inputValue, this.props.session_id);
         this.setState({inputValue: ''});
     };
 
@@ -60,14 +60,5 @@ const styles = StyleSheet.create({
     },
 });
 
-select = (state) => {
-    return {}
-};
-act    = (dispatch) =>
-{
-	return bindActionCreators({
-		submit_data : Actions.msg.submit
-	} , dispatch)
-};
 
-export default connect(select , act)(BottomInput)
+export default BottomInput

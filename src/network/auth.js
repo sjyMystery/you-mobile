@@ -1,113 +1,45 @@
 import * as codes from '../codes'
+import csrf from './csrf'
+import fetch_factory from './fetch_factory'
 
-export const login = (username , password) =>
-{
-	var p = new Promise(function(resolve , reject)
-	{
-		fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})
-			.then((response) =>
-			{
-				response.json().then(data =>
-				{
-					fetch('http://incidence.cn:9924/mobile/auth/login' ,
-						{
-							method : 'POST' ,
-							headers : {
-								'X-CSRF-TOKEN' : data['csrf_token'] ,
-								'Accept' : 'application/json' ,
-								'Content-Type' : 'application/json'
-							} ,
-							body : JSON.stringify(
-								{
-									'username' : username ,
-									'password' : password
-								}
-							)
-						})
-						.then((response) =>
-						{
-
-                            console.log("login request response :", response);
-
-							response.json().then(data =>
-							{
-								if(data['status'] == 1)
-								{
-									resolve({username : username , token : data.token})
-								}
-								else
-								{
-                                    console.log("login,failed", data);
-									//这个地方登录就失败了，
-                                    reject({error: codes.error.verify_id_failed, message: "用户名或密码错误"})
-								}
-							}).catch((error) => reject({
-								error : codes.error.server_data_invalid ,
-								message : '登陆时服务器返回了无效的数据：' + error
-							}))
-
-						}).catch((error) => reject({
-						error : codes.error.network_exception ,
-						message : '登陆时遭遇网络错误：' + error
-					}))
-				})
-					.catch((error) =>
-					{
-						reject({error : codes.error.server_data_invalid , message : '获取CSRFTOKEN时服务器返回了无效的数据：' + error})
-					})
-
-			}).catch((error) => reject({error : codes.error.network_exception , message : '登陆时遭遇网络错误：' + error}))
-	});
-	return p;
+export const http_login = (username, token) => {
+    return new Promise((resolve, reject) => csrf()
+            .then(csrf_token => fetch_factory('/mobile/auth/token_login', 'POST', csrf_token, {
+                username: username,
+                token: token
+            }), err => reject(err))
+            .then(
+                data => {
+                    if (data['status'] == 1) {
+                        resolve()
+                    }
+                    else {
+                        reject({error: codes.error.verify_id_failed, message: '身份验证失败'})
+                    }
+                },
+                err => reject(err)
+            ),
+        err => reject(err)
+    )
 };
-
-export const http_login = (username , token , success , failed) =>
-{
-	fetch('http://incidence.cn:9924/csrf_token' , {method : 'GET'})
-		.then((response) =>
-		{
-			response.json().then(data =>
-			{
-				fetch('http://incidence.cn:9924/mobile/auth/token_login' ,
-					{
-						method : 'POST' ,
-						headers : {
-							'X-CSRF-TOKEN' : data['csrf_token'] ,
-							'Accept' : 'application/json' ,
-							'Content-Type' : 'application/json'
-						} ,
-						body : JSON.stringify(
-							{
-								'username' : username ,
-								'token' : token
-							}
-						)
-					})
-					.then((response) =>
-					{
-
-						console.log("login with Token request response :");
-						console.log(response);
-
-						response.json().then(data =>
-						{
-							if(data['status'] == 1)
-							{
-								success(username , data.token)
-							}
-							else
-							{
-								//这个地方登录就失败了，
-                                failed(codes.error.verify_id_failed, "用户名或者TOken错误")
-							}
-						}).catch((error) => failed(codes.error.server_data_invalid , '登陆时服务器返回了无效的数据：' + error))
-
-					}).catch((error) => failed(codes.error.network_exception , '登陆时遭遇网络错误：' + error))
-			})
-				.catch((error) =>
-				{
-					failed(codes.error.server_data_invalid , '获取CSRFTOKEN时服务器返回了无效的数据：' + error)
-				})
-
-		}).catch((error) => failed(codes.error.network_exception , '登陆时遭遇网络错误：' + error))
+export const login = (username, password) => {
+    return new Promise((resolve, reject) => csrf()
+            .then(csrf_token => fetch_factory('/mobile/auth/login', 'POST', csrf_token, {
+                username: username,
+                password: password
+            }), err => reject(err))
+            .then(
+                data => {
+                    if (data['status'] == 1) {
+                        console.log('login success:', resolve);
+                        resolve({username: username, token: data['token']})
+                    }
+                    else {
+                        reject({error: codes.error.verify_id_failed, message: '身份验证失败'})
+                    }
+                },
+                err => reject(err)
+            ),
+        err => reject(err)
+    )
 };

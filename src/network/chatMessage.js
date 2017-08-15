@@ -40,6 +40,8 @@ export default class chatMessage extends wsMessage {
 			case codes.protocol.PUSH_MSG:
 			{
 				console.log('we are pushed msg:' , data.message);
+                if (data.message == [])
+                    break;
 				this.pushMessage(data.message);
 				var message_list = [];
 				for(var key in data.message)
@@ -52,6 +54,8 @@ export default class chatMessage extends wsMessage {
 			case codes.protocol.PULL_MSG_R:
 			{
 				this.pushMessage(data.message);
+                if (data.message == [])
+                    break;
 				var message_list = [];
 				for(var key in data.message)
 				{
@@ -60,6 +64,9 @@ export default class chatMessage extends wsMessage {
 				this.sendReciveMessage(message_list);
 				break;
 			}
+            case codes.protocol.SEND_MSG_R: {
+                console.log('send msg returned:', data)
+            }
 		}
     };
 

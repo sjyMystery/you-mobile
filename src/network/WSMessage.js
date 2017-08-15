@@ -21,6 +21,7 @@ export default class wsMessage {
             'id': 1
         };
         var buff = JSON.stringify(data);
+        console.log('sending:', data);
         this.ws.send(buff)
     };
 
@@ -31,12 +32,12 @@ export default class wsMessage {
 		})
 	};
 
-	sendChatMessage = (msg) =>
+    sendChatMessage = (msg, session_id) =>
 	{
 		this.sendMessage({
 			protocol : codes.protocol.SEND_MSG ,
 			message : msg ,
-			remote : ''
+            remote: session_id
 		})
 	};
 

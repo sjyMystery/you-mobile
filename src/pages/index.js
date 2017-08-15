@@ -3,8 +3,7 @@
  */
 
 export ChatRoom from './chatroom';
-export ContactList from './ContactList';
-export DefaultPage from './default';
+export Contacts from './contacts';
 export Home from './home';
 export Login from './login'
 export Load from './load'

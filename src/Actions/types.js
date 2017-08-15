@@ -16,12 +16,14 @@ export const HTTP_LOG_IN = "HTTP_LOG_IN";
 export const TO_LOGIN    = "TO_LOGIN";
 export const TO_CHATROOM = "TO_CHATROOM";
 export const TO_HOME = "TO_HOME";
-export const TO_CONTACTLIST = "TO_CONTACTLIST";
+export const TO_CONTACTS = "TO_CONTACTS";
 
 
 //下面是聊天界面的部分
 export const SUBMIT_MSG = "SUBMIT_MSG";
 export const PUSH_MSG   = "PUSH_MSG";
+
+export const CONVERT_SESSION = "CONVERT_SESSION";
 
 //更新联系人列表
 export const UPDATE_CONTACT_LIST = "UPDATE_CONTACT_LIST";

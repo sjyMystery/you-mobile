@@ -3,61 +3,13 @@ import * as STATE from './state';
 const view                = require('react-native').ListView;
 //默认是停留在这个界面等待登录的情况
 
-const rows = [{
-    rl: 0,
-    content: '诗三百篇',
-    avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-},
-    {
-        rl: 1,
-        content: '长]',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向fsdfffffffffffffffffffffff',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 0,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 0,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    },
-    {
-        rl: 1,
-        content: '我在这路上，忘了来时的方向',
-        avatar: 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
-    }];
+const rows = [[], []];
 
 const initialMessageState = {
     rows: rows,
 	submitted : false ,
-    ds: ((new view.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(rows)))
+    ds: ((new view.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(rows))),
+    session_id: 10
 };
 const assign              = (previous , next) =>
 {
@@ -75,19 +27,24 @@ messageReducer = (state = initialMessageState , action) =>
 
 			for(var key in action.message)
 			{
-				rows.push({
+                if (rows[action.message[key].session] == undefined) {
+                    rows[action.message[key].session] = [];
+                }
+                rows[action.message[key].session].push({
 					rl : 0 ,
 					content : action.message[key].content ,
 					remote : action.message[key].remote ,
 					avatar : 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
 				})
 			}
-			console.log("add message" , action.message);
-
+            console.log("add message", action.message, 'from session', state.session_id, 'state', state);
+            if (rows[state.session_id] == undefined) {
+                rows[state.session_id] = [];
+            }
 			var newState = assign(state , {
 				rows : rows ,
 				submitted : state.submitted ,
-				ds : state.ds.cloneWithRows(rows)
+                ds: state.ds.cloneWithRows(rows[state.session_id])
 			});
 
 			console.log(rows , newState);
@@ -97,22 +54,34 @@ messageReducer = (state = initialMessageState , action) =>
 		{
 			var rows = state.rows.concat();
 
-			rows.push({
+            if (rows[state.session_id] == undefined) {
+                rows[state.session_id] = [];
+            }
+            rows[state.session_id].push({
 				rl : 1 ,
 				content : action.message ,
 				avatar : 'http://img1.imgtn.bdimg.com/it/u=3580504744,3022551902&fm=214&gp=0.jpg'
 			});
 
+
 			var newState = assign(state , {
 				rows : rows ,
 				submitted : true ,
-				ds : state.ds.cloneWithRows(rows)
+                ds: state.ds.cloneWithRows(rows[state.session_id])
 			});
-			console.log(rows , newState);
+            console.log(rows);
+            console.log(rows[state.session_id], newState);
 			return newState;
 		}
         case ACTION.CONVERT_SESSION: {
-
+            if (state.rows[state.session_id] == undefined)
+                state.rows[state.session_id] = [];
+            return assign(state, {
+                ds: state.ds.cloneWithRows(state.rows[state.session_id]),
+                session_id: action.session_id
+            })
+        }
+        case ACTION.INIT: {
         }
 		default:
 		{

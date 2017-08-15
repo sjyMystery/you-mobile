@@ -40,7 +40,7 @@ class Home extends React.Component {
                         color={'#5e6977'} type="foundation" name='torsos-male-female' size={20}/>}
                     renderSelectedIcon={() => <Icon color={'#6296f9'} name='whatshot' size={30}/>}
                     onPress={() => {
-                        dispatch(Actions.to_contactlist())
+                        this.props.to_contacts()
                     }}>
                 </Tab>
                 <Tab
@@ -78,7 +78,7 @@ select = (state) => {
 };
 selectDispatch = (dispatch) => {
     return bindActionCreators(
-        {openChat: Actions.contact.openChat}, dispatch
+        {to_contacts: Actions.to_contacts}, dispatch
     )
 };
 

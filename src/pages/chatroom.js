@@ -21,8 +21,9 @@ class ChatRoom extends React.Component {
         //<MessageList/>
         //
         let content = <View style={styles.container}>
-			<MessageList/>
-			<BottomInput connection={this.props.connection}/>
+            <MessageList ds={this.props.ds} submitted={this.props.submitted}/>
+            <BottomInput connection={this.props.connection} session_id8={this.props.session_id}
+                         submit={this.props.submit}/>
         </View>;
         if (Platform.OS === 'ios') {
             return (
@@ -54,7 +55,10 @@ const styles     = StyleSheet.create({
 select           = (state) =>
 {
 	return {
-		connection : state.main.connection
+        connection: state.main.connection,
+        session_id: state.message.session_id,
+        ds: state.message.ds,
+        submitted: state.message.submitted
 	}
 };
 dispatchFunction = (dispatch) =>

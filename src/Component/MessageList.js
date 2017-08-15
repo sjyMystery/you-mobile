@@ -12,6 +12,7 @@ class MessageList extends React.Component {
 
     constructor(props) {
         super(props);
+        this._userHasBeenInputed = this.props.submitted
     }
 
     renderRow = (message) => {
@@ -65,11 +66,4 @@ class MessageList extends React.Component {
     }
 }
 
-select = (state) => {
-    return {
-		_userHasBeenInputed : state.message.submitted ,
-		ds : state.message.ds
-    }
-};
-
-export default connect(select)(MessageList)
+export default MessageList

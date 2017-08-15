@@ -1,9 +1,8 @@
 import * as TYPES from './types'
 import * as Route from '../routes'
 
-export const submit = (connection , msg) =>
-{
-	connection.sendChatMessage(msg);
+export const submit = (connection, msg, session_id) => {
+    connection.sendChatMessage(msg, session_id);
     return {
 		type : TYPES.SUBMIT_MSG ,
 		message : msg
@@ -17,9 +16,9 @@ export const push   = (msg) =>
 	}
 };
 
-export const convert = (session) => {
+export const convert = (session_id) => {
     return {
-        message: TYPES.CONVERT_SESSION,
-        session: session
+        type: TYPES.CONVERT_SESSION,
+        session_id: session_id
     }
 };

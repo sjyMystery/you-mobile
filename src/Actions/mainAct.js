@@ -18,12 +18,12 @@ export const to_home        = () =>
     }
 
 };
-export const to_contactlist = () => {
+export const to_contacts = () => {
 	return dispatch =>
 	{
-		Route.Push(Route.CONTACT_LIST);
+        Route.Push(Route.CONTACTS);
 		return dispatch({
-			type : TYPES.TO_CONTACTLIST
+            type: TYPES.TO_CONTACTS
 		})
     }
 };

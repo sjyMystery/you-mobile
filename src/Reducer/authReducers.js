@@ -50,6 +50,11 @@ const loginReducer = (state=initialLoginState,action)=>{
 					http_login : true
 				})
 			}
+            else {
+                return assign(state, {
+                    http_login: false
+                })
+            }
 			break;
         }
         default:

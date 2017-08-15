@@ -17,6 +17,9 @@ const contactReducer = (state = initialContactState, action) => {
         case Actions.UPDATE_CONTACT_LIST: {
             return updateList(state, action.list)
         }
+        case Actions.OPEN_CHAT: {
+            return state
+        }
         default: {
             return state
         }

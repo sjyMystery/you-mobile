@@ -12,7 +12,7 @@ const navigator = Actions.create(
 		<Scene key={Names.HOME} component={Pages.Home} tabs={false}/>
 		<Scene key={Names.CHATROOM} component={Pages.ChatRoom} tabs={false}/>
 		<Scene key={Names.LOGIN} component={Pages.Login} tabs={false}/>
-		<Scene key={Names.CONTACT_LIST} component={Pages.ContactList}/>
+        <Scene key={Names.CONTACTS} component={Pages.Contacts}/>
 	</Scene>);
 
 export default navigator

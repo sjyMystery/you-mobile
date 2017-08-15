@@ -26,16 +26,16 @@ export default class MessageCell extends React.Component {
         let {message} = this.props;
 
         let differentStyle = {};
-        if (!message.rl) {
+        if (message.rl) {
             differentStyle = {
                 flexDirection: 'row-reverse',
-                backgroundColor: style.color.mikebluePro,
-                borderColor: style.color.white
+                borderColor: style.color.white,
+                backgroundColor: style.color.white
             };
         } else {
             differentStyle = {
                 flexDirection: 'row',
-                backgroundColor: style.color.white,
+                backgroundColor: style.color.mikebluePro,
                 borderColor: style.color.white
             };
         }
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     avatar: {
         borderRadius: 20,
         borderWidth: style.chatroom.avatarBorderWidth,
-        borderColor: style.color.black,
+        borderColor: style.color.white,
         margin: style.chatroom.messageCellMargin,
         width: style.chatroom.avatarWidth,
         height: style.chatroom.avatarHeight
