@@ -4,7 +4,6 @@ import * as style from '../style'
 
 import {Dimensions} from 'react-native'
 
-export var {height, width} = Dimensions.get('window');
 
 export default class MessageCell extends React.Component {
     //属性约定如下：
@@ -26,7 +25,7 @@ export default class MessageCell extends React.Component {
         let {message} = this.props;
 
         let differentStyle = {};
-        if (message.rl) {
+        if (!message.rl) {
             differentStyle = {
                 flexDirection: 'row-reverse',
                 borderColor: style.color.white,

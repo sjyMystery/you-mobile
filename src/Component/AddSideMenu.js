@@ -11,7 +11,6 @@ const AddSideMenu = (WrappedComponent) => {
                 isOpen: false
             };
             this.toggleSideMenu = this.toggleSideMenu.bind(this);
-            console.log('render side menu')
         }
 
         onSideMenuChange(isOpen: boolean) {

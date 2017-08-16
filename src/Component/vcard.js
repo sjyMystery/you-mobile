@@ -11,13 +11,13 @@ export default class VCard extends React.Component
             <View style={{height: 50, flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon
-						style={{marginLeft : 20}}
-						name='qrcode'
-						type='font-awesome'
-						color='#000000'
-						iconStyle={{}}
-						size={40}
-						onPress={() => console.log('hello')}/>
+                        style={{marginLeft : 20}}
+                        name='qrcode'
+                        type='font-awesome'
+                        color='#000000'
+                        iconStyle={{}}
+                        size={40}
+                        onPress={() => this.props.qrscanner}/>
                 </View>
                 <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon

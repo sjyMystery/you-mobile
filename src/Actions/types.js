@@ -17,7 +17,8 @@ export const TO_LOGIN    = "TO_LOGIN";
 export const TO_CHATROOM = "TO_CHATROOM";
 export const TO_HOME = "TO_HOME";
 export const TO_CONTACTS = "TO_CONTACTS";
-
+export const TO_QRSCANNER = "TO_QRSCANNER";
+export const TO_PROFILE = "TO_PROFILE";
 
 //下面是聊天界面的部分
 export const SUBMIT_MSG = "SUBMIT_MSG";

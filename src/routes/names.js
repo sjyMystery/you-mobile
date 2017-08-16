@@ -5,3 +5,5 @@ export const CHATROOM     = "chatroom";
 export const CONTACTS = "contacts";
 export const SIDE_MENU    = "sidemenu";
 export const LOAD         = "load";
+export const QRSCANNER = "qrscanner";
+export const PROFILE = "profile";

@@ -26,6 +26,7 @@ class Home extends React.Component {
                 mobile={this.props.profile.mobile}
                 id={this.props.profile.id}
                 openChat={this.props.openChat}
+                qrscanner={this.props.to_qrscanner}
             />
             <Tabs tabBarStyle={{
                 height: 40,
@@ -78,7 +79,10 @@ select = (state) => {
 };
 selectDispatch = (dispatch) => {
     return bindActionCreators(
-        {to_contacts: Actions.to_contacts}, dispatch
+        {
+            to_contacts: Actions.to_contacts,
+            to_qrscanner: Actions.to_qrscanner
+        }, dispatch
     )
 };
 

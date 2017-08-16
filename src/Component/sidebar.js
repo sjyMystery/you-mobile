@@ -27,20 +27,21 @@ class SideBar extends React.Component
 {
 
 	datas = [
-		{
-			name : "聊天吧" ,
-			action : Actions.to_chatroom ,
-			icon_type : "font-awesome" ,
-			icon_name : "comments-o" ,
-			bg : "#C5F442"
-		} ,
+        ,
 		{
 			name : "主页" ,
 			action : Actions.to_home ,
 			icon_name : "circle-o" ,
 			icon_type : "font-awesome" ,
 			bg : "#C5F442"
-		}
+        },
+        {
+            name: "资料",
+            action: Actions.to_profile,
+            icon_name: "id-card",
+            icon_type: "font-awesome",
+            bg: "#C5F442"
+        }
 ];
     constructor(props) {
         super(props);

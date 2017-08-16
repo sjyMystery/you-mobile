@@ -9,7 +9,7 @@ class MessageList extends React.Component {
     _userReachEnd = true;
     _userHasBeenInputed = false;
     MessageListView: Object;
-
+    ds: Object;
     constructor(props) {
         super(props);
         this._userHasBeenInputed = this.props.submitted
@@ -43,8 +43,8 @@ class MessageList extends React.Component {
             });
         }, this._userHasBeenInputed ? 0 : 130);
     }
-
     render() {
+        console.log(this.props.ds);
         return <ListView
             dataSource={this.props.ds}
             renderRow={this.renderRow}

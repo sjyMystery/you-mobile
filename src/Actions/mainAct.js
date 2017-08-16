@@ -37,4 +37,19 @@ export const to_login =()=>{
     }
 };
 
+export const to_qrscanner = () => {
+    return dispatch => {
+        Route.Push(Route.QRSCANNER);
+        return dispatch({type: TYPES.TO_QRSCANNER})
+    }
+};
+
+export const to_profile = () => {
+    return dispatch => {
+        Route.Push(Route.PROFILE);
+        return dispatch({type: TYPES.TO_PROFILE})
+    }
+};
+
+
 

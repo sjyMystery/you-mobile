@@ -29,7 +29,7 @@ export default function configureStore(onComplete: () => void) {
 	const store = autoRehydrate({log : true})(createAppStore)(Reducer);
     let opt     = {
         storage: AsyncStorage,
-		whitelist : ['auth']
+        whitelist: ['auth', 'contact', 'profile', 'message']
     };
     persistStore(store, opt, onComplete);
     return store;

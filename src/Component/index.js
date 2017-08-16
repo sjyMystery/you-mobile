@@ -1,3 +1,4 @@
+export QRScreen from "./QRScreen";
 export ContactList from "./ContactList";
 export BottomInput from './BottomInput.js'
 export MessageList from './MessageList.js'
@@ -6,3 +7,6 @@ export ContactCell from './ContactCell'
 export SideBar from './sidebar'
 export AddSideMenu from './AddSideMenu'
 export VCard from './vcard'
+export ProfileEditor from './profileEditor'
+export ProfilePlayer from './profilePlayer'
+export Page from './page'
