@@ -2,8 +2,7 @@ import React from 'react'
 import {Text, StyleSheet, View, Image, Dimensions} from 'react-native';
 import {Tabs, Tab, Icon} from 'react-native-elements'
 import * as Actions from '../Actions'
-import {connect} from 'react-redux'
-import {AddSideMenu , VCard} from '../Component'
+import {Page , VCard} from '../Component'
 
 import {bindActionCreators} from 'redux'
 
@@ -14,9 +13,6 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-		//source={require('../../assets/img/logo1.png')}
-        const {dispatch} = this.props;
         return <View style={styles.container}>
             <VCard
                 style={{height: Dimensions.get('window').height, width: Dimensions.get('window').width}}
@@ -30,8 +26,9 @@ class Home extends React.Component {
             />
             <Tabs tabBarStyle={{
                 height: 40,
-                borderTopWidth: 1, borderTopColor: '#ffffff', backgroundColor: '#ffffff'
-            }}>
+                borderTopWidth: 0, borderTopColor: '#ffffff', backgroundColor: '#ffffff'
+            }}
+                tabBarShadowStyle={{backgroundColor:'#ffffff'}}>
                 <Tab
                     titleStyle={{fontWeight: 'bold', fontSize: 10}}
                     selectedTitleStyle={{marginTop: -1, marginBottom: 6}}
@@ -86,5 +83,5 @@ selectDispatch = (dispatch) => {
     )
 };
 
-var HomeWithSide = AddSideMenu(connect(select, selectDispatch)(Home));
+var HomeWithSide = Page.WithSideMenu(select, selectDispatch,Home);
 export default HomeWithSide

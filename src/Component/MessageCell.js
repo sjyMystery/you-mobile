@@ -22,8 +22,7 @@ export default class MessageCell extends React.Component {
     }
 
     render() {
-        let {message} = this.props;
-
+        let message = this.props.message.item;
         let differentStyle = {};
         if (!message.rl) {
             differentStyle = {
@@ -64,9 +63,8 @@ export default class MessageCell extends React.Component {
 
 const styles = StyleSheet.create({
     messageCell: {
-        marginTop: 5,
-        marginBottom: 5,
-        borderRadius: style.chatroom.mesasgeCellRadius,
+        marginTop: style.chatroom.messageCellMargin,
+        marginBottom: style.chatroom.messageCellMargin,
     },
     messageCellText: {
         fontSize: style.chatroom.messageFontSize
@@ -75,22 +73,22 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: style.chatroom.avatarBorderWidth,
         borderColor: style.color.white,
-        margin: style.chatroom.messageCellMargin,
+        margin: style.chatroom.messageContentMargin,
         width: style.chatroom.avatarWidth,
         height: style.chatroom.avatarHeight
     },
     contentView: {
-        borderRadius: style.chatroom.messageCellRadius,
-        borderWidth: style.chatroom.messageCellBorderWith,
-        padding: style.chatroom.messageCellPaddingV,
+        borderRadius: style.chatroom.messageContentRadius,
+        borderWidth: style.chatroom.messageContentBorderWith,
+        padding: style.chatroom.messageContentPaddingV,
         overflow: 'hidden',
-        margin: style.chatroom.messageCellMargin,
+        margin: style.chatroom.messageContentMargin,
         justifyContent: 'space-between',
-        maxWidth: style.chatroom.messageMaxWidth,
+        maxWidth: style.chatroom.messageContentMaxWidth,
     },
     endBlankBlock: {
-        margin: style.chatroom.messageCellMargin,
-        height: style.chatroom.messageCellHeight,
+        margin: style.chatroom.messageContentMargin,
+        height: style.chatroom.messageContentHeight,
         width: style.chatroom.endLineBlankWidth,
         flex: 1
     }

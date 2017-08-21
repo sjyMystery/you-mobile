@@ -5,3 +5,4 @@ export const middle = 14;
 export const large = 16;
 export const xlarge = 18;
 export const max = 20;
+export const xmax = 25;

@@ -17,7 +17,7 @@ export default class VCard extends React.Component
                         color='#000000'
                         iconStyle={{}}
                         size={40}
-                        onPress={() => this.props.qrscanner}/>
+                        onPress={this.props.qrscanner}/>
                 </View>
                 <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon

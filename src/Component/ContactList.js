@@ -2,6 +2,7 @@ import React from 'react'
 import ContactCell from './ContactCell'
 
 import {List} from 'react-native-elements'
+import * as style from '../style'
 
 class ContactList extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class ContactList extends React.Component {
         var list = this.props.list;
         if (typeof list.map === 'function') {
 
-            return <List containerStyle={{marginBottom: 20}}>
+            return <List containerStyle={{backgroundColor: style.page.ftcolor, borderTopWidth: 0,}}>
                 {
                     list.map((l, i) => (
                         <ContactCell

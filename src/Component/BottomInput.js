@@ -1,10 +1,7 @@
 import React from 'react'
 import {Text, TextInput, StyleSheet, View} from 'react-native'
 import {Item, Input} from 'native-base'
-import {Divider} from 'react-native-elements'
-import {connect} from 'react-redux'
-import * as Actions from '../Actions'
-import {bindActionCreators} from 'redux'
+import * as style from '../style'
 class BottomInput extends React.Component {
 
 
@@ -17,7 +14,7 @@ class BottomInput extends React.Component {
     }
 
     _onPress = () => {
-        this.props.submit(this.props.connection, this.state.inputValue, this.props.session_id);
+        this.props.submit(this.state.inputValue);
         this.setState({inputValue: ''});
     };
 
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
 		justifyContent : 'flex-start' ,
         borderTopWidth: 0,
         backgroundColor: '#fafafa',
-        height: 40
+        height: style.chatroom.bottomHeight
     },
 });
 

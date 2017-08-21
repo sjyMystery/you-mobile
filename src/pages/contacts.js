@@ -1,8 +1,8 @@
 import React from 'react';
 import {ContactList} from '../Component'
 import * as Actions from '../Actions'
-import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {Page} from '../Component'
 
 class Contacts extends React.Component {
     render() {
@@ -19,4 +19,4 @@ selectProps = (state) => {
     }
 };
 
-export default connect(selectProps, selectActions)(Contacts);
+export default Page.WithHeaderNav(selectProps, selectActions,Contacts);

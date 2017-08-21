@@ -19,6 +19,9 @@ export const TO_HOME = "TO_HOME";
 export const TO_CONTACTS = "TO_CONTACTS";
 export const TO_QRSCANNER = "TO_QRSCANNER";
 export const TO_PROFILE = "TO_PROFILE";
+export const TO_PROFILE_EDIT = "TO_PROFILE_EDIT";
+
+export const ROUTE_POP = "ROUTE_POP";
 
 //下面是聊天界面的部分
 export const SUBMIT_MSG = "SUBMIT_MSG";
@@ -30,5 +33,7 @@ export const CONVERT_SESSION = "CONVERT_SESSION";
 export const UPDATE_CONTACT_LIST = "UPDATE_CONTACT_LIST";
 //更新个人资料
 export const UPDATE_HOME_PROFILE = "UPDATE_HOME_PROFILE";
+
+export const EDIT_PROFILE = "EDIT_PROFILE";
 
 export const OPEN_CHAT = "OPEN_CHAT";

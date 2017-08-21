@@ -1,5 +1,11 @@
-import fetch_factory from './fetch_factory'
+import request from './fetch_factory'
 
 export const get = () => {
-    return fetch_factory('/profile')
+    return request('/profile')
 };
+
+export const edit=(item,value) =>{
+    data={}
+    data[item]=value
+    return request('/profile','POST',data)
+}

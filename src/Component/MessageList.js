@@ -1,25 +1,26 @@
 import React from 'react'
 
-import {ListView} from 'react-native'
+import {FlatList} from 'react-native'
 import MessageCell from './MessageCell.js'
-
+import * as style from '../style'
 import {connect} from 'react-redux'
 
 class MessageList extends React.Component {
     _userReachEnd = true;
     _userHasBeenInputed = false;
     MessageListView: Object;
-    ds: Object;
     constructor(props) {
         super(props);
         this._userHasBeenInputed = this.props.submitted
     }
 
     renderRow = (message) => {
+        console.log(message)
         return <MessageCell message={message}/>
     };
 
     _scrollToBottom() {
+        /*
         let scrollProperties = this.MessageListView.scrollProperties;
         // 如果组件没有挂载完全，则不进行内容偏移
         if (!scrollProperties.visibleLength) {
@@ -42,25 +43,20 @@ class MessageList extends React.Component {
                 animated: this._userHasBeenInputed
             });
         }, this._userHasBeenInputed ? 0 : 130);
+        */
+        if(style.chatroom.reachEnd(this.props.message_list.length))
+            this.MessageListView.scrollToEnd()
     }
     render() {
-        console.log(this.props.ds);
-        return <ListView
-            dataSource={this.props.ds}
-            renderRow={this.renderRow}
+        return <FlatList
+            data={this.props.message_list}
+            renderItem={this.renderRow}
             enableEmptySections={true}
             ref={(reference) => {
                 this.MessageListView = reference;
             }}
             onLayout={
-                (event) => {
-                    this._scrollToBottom();
-                }
-            }
-            onContentSizeChange={
-                (event) => {
-                    this._scrollToBottom();
-                }
+                ()=>this._scrollToBottom()
             }
         />
     }

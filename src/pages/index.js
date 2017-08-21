@@ -9,3 +9,4 @@ export Home from './home';
 export Login from './login'
 export Load from './load'
 export Profile from './profile'
+export ProfileEdit from './profile.edit'

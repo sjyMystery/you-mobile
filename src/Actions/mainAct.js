@@ -39,7 +39,8 @@ export const to_login =()=>{
 
 export const to_qrscanner = () => {
     return dispatch => {
-        Route.Push(Route.QRSCANNER);
+    	console.log('test')
+        Route.Push(Route.QRSCANNER,{title:'扫描二维码'});
         return dispatch({type: TYPES.TO_QRSCANNER})
     }
 };
@@ -51,5 +52,19 @@ export const to_profile = () => {
     }
 };
 
+export const to_profile_edit = (item,name,value='',type='text') =>{
+	return dispatch=>{
+		Route.Push(Route.PROFILE_EDIT,{item:item,item_name:name,value:value,type:type})
+		return dispatch({type:TYPES.TO_PROFILE_EDIT})
+	}
+}
+
+export const pop =()=> {
+	return dispatch=>{
+		console.log('pop')
+		Route.Pop()
+		return dispatch({type:TYPES.ROUTE_POP})
+	}
+}
 
 

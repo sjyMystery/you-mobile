@@ -11,6 +11,6 @@ export const Push = (route, params = {}) => {
     Flux.Actions.push(route, params)
 };
 
-export const Pop = (route, params = {}) => {
-    Flux.Actions.pop(route, params)
+export const Pop = () => {
+    Flux.Actions.pop()
 };

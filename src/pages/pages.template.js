@@ -17,4 +17,4 @@ selectActions = (dispatch) => {
     return bindActionCreators({}, dispatch)
 };
 
-export default Page(selectProps, selectActions, myPage)
+export default Page.Pure(selectProps, selectActions, myPage)

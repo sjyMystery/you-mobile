@@ -1,40 +1,36 @@
-//import { QRScannerView } from 'ac-qrcode';
-import React from 'react'
-import View from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { BarCodeScanner, Permissions } from 'expo';
 
-export default class QRScreen extends React.Component {
+export default class BarcodeScannerExample extends React.Component {
+    state = {
+        hasCameraPermission: null,
+    }
+
+    async componentWillMount() {
+        const { status } = await Permissions.askAsync(Permissions.CAMERA);
+        this.setState({hasCameraPermission: status === 'granted'});
+    }
+
     render() {
-        /*        return (
-
-                    < QRScannerView
-                        onScanResultReceived={this.barcodeReceived.bind(this)}
-
-                        renderTopBarView={() => this._renderTitleBar()}
-
-                        renderBottomMenuView={() => this._renderMenu()}
+        const { hasCameraPermission } = this.state;
+        if (hasCameraPermission === null) {
+            return <View />;
+        } else if (hasCameraPermission === false) {
+            return <Text>No access to camera</Text>;
+        } else {
+            return (
+                <View style={{flex: 1}}>
+                    <BarCodeScanner
+                        onBarCodeRead={this._handleBarCodeRead}
+                        style={StyleSheet.absoluteFill}
                     />
-                )*/
-        return <View/>
+                </View>
+            );
+        }
     }
 
-    _renderTitleBar() {
-        return (
-            <Text
-                style={{color: 'white', textAlignVertical: 'center', textAlign: 'center', font: 20, padding: 12}}
-            >Here is title bar</Text>
-        );
-    }
-
-    _renderMenu() {
-        return (
-            <Text
-                style={{color: 'white', textAlignVertical: 'center', textAlign: 'center', font: 20, padding: 12}}
-            >Here is bottom menu</Text>
-        )
-    }
-
-    barcodeReceived(e) {
-        Toast.show('Type: ' + e.type + '\nData: ' + e.data);
-        //console.log(e)
+    _handleBarCodeRead = (data) => {
+        alert(JSON.stringify(data));
     }
 }

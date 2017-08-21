@@ -11,8 +11,16 @@ import * as Actions from '../Actions'
 
 class ChatRoom extends React.Component {
 
+
+    messageList:Object
+
     constructor() {
         super();
+    }
+
+    submit = (inputValue)=>{
+        this.messageList._scrollToBottom()
+        this.props.submit(this.props.connection,inputValue, this.props.session_id)
     }
 
 
@@ -21,9 +29,8 @@ class ChatRoom extends React.Component {
         //<MessageList/>
         //
         let content = <View style={styles.container}>
-            <MessageList ds={this.props.ds[this.props.session_id]} submitted={this.props.submitted}/>
-            <BottomInput connection={this.props.connection} session_id={this.props.session_id}
-                         submit={this.props.submit}/>
+            <MessageList message_list={this.props.message_list} submitted={this.props.submitted} ref={(ref)=>{this.messageList=ref}}/>
+            <BottomInput submit={this.submit}/>
         </View>;
         if (Platform.OS === 'ios') {
             return (
@@ -56,7 +63,8 @@ select           = (state) =>
 {
 	return {
         connection: state.main.connection,
-        ds: state.message.ds,
+        session_id:state.message.session_id,
+        message_list: state.message.message_lists[state.message.session_id],
         submitted: state.message.submitted
 	}
 };

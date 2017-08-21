@@ -68,7 +68,7 @@ export const login              = (username,password) => {
         var p = new Promise((resolve, reject) => {
                 auth.login(username, password).then((data) => {
                     resolve(data);
-                    dispatch(login_success())
+                    dispatch(login_success(username,data.token))
                 }, (error) => {
                     dispatch(login_failed(error));
                     reject(error)

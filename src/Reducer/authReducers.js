@@ -48,6 +48,13 @@ const loginReducer = (state=initialLoginState,action)=>{
             }
 			break;
         }
+        case Actions.LOAD:
+        {
+            return assign(state, {
+                http_login: false,
+                error:null
+            })
+        }
         default:
         {
             return state
