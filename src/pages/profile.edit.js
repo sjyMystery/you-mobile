@@ -8,43 +8,39 @@ import * as act from '../Actions'
 import * as style from '../style'
 myPage = class ProfileEdit extends React.Component {
 
-    input :Ojbect
-
-    constructor(props)
-    {
-        super(props)
-        this.state={value:props.value}
-    }
-
+    input: Ojbect;
     onChanged =()=>{
         this.props.pop()
-    }
+    };
     onChangeFailed = () =>{
 
-    }
+    };
     onNoChange =()=>{
         this.props.pop()
-    }
+    };
     onPressRight = () => {
         if(this.state.value!=this.props.value)
         this.props.submit(this.props.item,this.state.value)
-            .then(this.onChanged,this.props.onChangeFailed)
+            .then(this.onChanged, this.props.onChangeFailed);
         else
         {
             this.onNoChange()
         }
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {value: props.value}
     }
 
-
-
     render() {
-        console.log(this.props)
-        let right =<Text style={{color:style.page.header_ft_color}}>完成</Text>
-        var input
+        console.log(this.props);
+        let right = <Text style={{color: style.page.header_ft_color}}>完成</Text>;
+        var input;
         switch(this.props.type)
         {
             case 'gender':{
-                console.log('default value:',this.props.value)
+                console.log('default value:', this.props.value);
                 input =
                 <Picker
                     selectedValue={this.props.value||0}
@@ -52,7 +48,7 @@ myPage = class ProfileEdit extends React.Component {
                     style={{backgroundColor:style.page.ftcolor,marginTop:(style.device.height-style.page.header_height)/2}}>
                     <Picker.Item label="男" value={1} />
                     <Picker.Item label="女" value={0} />
-                </Picker>
+                </Picker>;
                 break
             }
             case 'phone':{
@@ -66,9 +62,21 @@ myPage = class ProfileEdit extends React.Component {
                             onSubmitEditing={this.onPressRight}
                             returnKeyType='done'
                             keyboardType='phone-pad'/>
-                    </Item>
+                    </Item>;
                 break
 
+            }
+            case 'mutiline': {
+                input =
+                    <Item regular style={{backgroundColor: style.page.ftcolor}}>
+                        <Input value={this.state.value}
+                               reference={(ref) => this.input = ref}
+                               onChangeText={(text) => this.setState({value: text})}
+                               onSubmitEditing={this.onPressRight}
+                               returnKeyType='done'
+                               keyboardType='phone-pad'
+                               mutiline={true}/>
+                    </Item>
             }
             default:{
 
@@ -80,7 +88,7 @@ myPage = class ProfileEdit extends React.Component {
                             onChangeText={(text)=>this.setState({value:text})}
                             onSubmitEditing={this.onPressRight}
                             returnKeyType='done'/>
-                    </Item>
+                    </Item>;
                 break
             }
         }

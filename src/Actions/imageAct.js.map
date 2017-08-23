@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "imageAct.js",
+  "sourceRoot": "",
+  "sources": [
+    "imageAct.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OAAO,CAAA,SAAP,MAAA;;AAEA,OAAA,IAAO,SAAP,GAAmB,CAAC,GAAD,CAAA,GAAA;SACjB,CAAC,QAAD,CAAA,GAAA;IACE,KAAK,CAAC,IAAN,CAAW,KAAK,CAAC,YAAjB,EAA+B;MAAA,GAAA,EAAK;IAAL,CAA/B;WACA,QAAA,CAAS;MAAA,IAAA,EAAM,KAAK,CAAC;IAAZ,CAAT;EAFF;AADiB"
+}

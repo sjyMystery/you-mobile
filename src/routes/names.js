@@ -8,3 +8,4 @@ export const PROFILE = "个人信息";
 export const PROFILE_EDIT ='编辑个人信息';
 export const QRCODE       = "二维码";
 export const WEB_PAGE     = '网页';
+export const IMAGE_PLAYER = '图片展示';

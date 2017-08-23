@@ -56,14 +56,6 @@ export const http_login         = (username , token) =>
 	}
 };
 export const login              = (username,password) => {
-    if (username == '1') {
-        username = '348831271@qq.com';
-        password = 'sujiayi970804'
-    }
-    else if (username == '2') {
-        username = '888888@incidence.cn';
-        password = '199788zpcA'
-    }
 
     return (dispatch) => {
         var p = new Promise((resolve, reject) => {
@@ -82,7 +74,7 @@ export const login              = (username,password) => {
 };
 export const logout = ()=>{
     return (dispatch)=>{
-        dispatch({type:TYPES.LOG_OUT})
+        dispatch({type: TYPES.LOG_OUT});
         dispatch(to_login())
     }
-}
+};

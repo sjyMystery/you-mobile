@@ -21,7 +21,7 @@ export const TO_QRSCANNER = "TO_QRSCANNER";
 export const TO_PROFILE = "TO_PROFILE";
 export const TO_PROFILE_EDIT = "TO_PROFILE_EDIT";
 export const TO_QRCODE = "TO_QR_CODE";
-export const TO_WEBPAGE= "TO_WEB_PAGE"
+export const TO_WEBPAGE = "TO_WEB_PAGE";
 export const ROUTE_POP = "ROUTE_POP";
 
 //下面是聊天界面的部分
@@ -43,3 +43,5 @@ export const GET_QRCODE="GET_QRCODE";
 export const SCAN_QRCODE="SCAN_QRCODE";
 
 export const OUTPUT_ERROR ="OUTPUT_ERROR";
+
+export const PLAY_IMAGE = "PLAY_IMAGE";

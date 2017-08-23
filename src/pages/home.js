@@ -16,13 +16,9 @@ class Home extends React.Component {
         return <View style={styles.container}>
             <VCard
                 style={{height: Dimensions.get('window').height, width: Dimensions.get('window').width}}
-                name={this.props.profile.name}
-                motto={this.props.profile.motto}
-                gender={this.props.profile.gender}
-                mobile={this.props.profile.mobile}
-                id={this.props.profile.id}
-                openChat={this.props.openChat}
-                qrscanner={this.props.to_qrscanner}
+                {...this.props.profile} {...this.props}
+                self={true}
+                uri="../../assets/img/app_icon.png"
             />
             <Tabs tabBarStyle={{
                 height: 40,
@@ -79,7 +75,8 @@ selectDispatch = (dispatch) => {
         {
             logout: Actions.auth.logout,
             to_contacts: Actions.to_contacts,
-            to_qrscanner: Actions.to_qrscanner
+            to_qrscanner: Actions.to_qrscanner,
+            openImage: Actions.openImage
         }, dispatch
     )
 };

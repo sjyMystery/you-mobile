@@ -17,7 +17,7 @@ export default class VCard extends React.Component
                         color='#000000'
                         iconStyle={{}}
                         size={40}
-                        onPress={this.props.qrscanner}/>
+                        onPress={this.props.to_qrscanner}/>
                 </View>
                 <View style={{height: 50, flexDirection: 'row'}}>
 					<Icon
@@ -39,13 +39,13 @@ export default class VCard extends React.Component
             }}><Text style={{fontSize: 13}}>No.{this.props.id}</Text></View>
             <View style={{height: 150, justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
 				<Avatar
-					rounded
-					xlarge
-					source={require("../../assets/img/app_icon.png")}
-					overlayContainerStyle={{backgroundColor : '#fafafa'}}
-					onPress={() => console.log("点了头像")}
-					activeOpacity={0.7}
-					containerStyle={{flex : 4 , marginTop : 0}}
+                    rounded
+                    xlarge
+                    source={require(this.props.uri)}
+                    overlayContainerStyle={{backgroundColor : '#fafafa'}}
+                    onPress={() => this.props.play_image(this.props.uri)}
+                    activeOpacity={0.7}
+                    containerStyle={{flex : 4 , marginTop : 0}}
 				/>
             </View>
             <View style={{
@@ -82,7 +82,9 @@ export default class VCard extends React.Component
             <View style={{height: 200, flexDirection: 'row', justifyContent: 'center'}}>
 
                 <View style={{height: 50, flexDirection: 'row'}}>
-                    <Icon
+                    {
+                        (this.props.self) ? null : (
+                            <Icon
                         size={40}
                         raised
                         reverse
@@ -92,8 +94,10 @@ export default class VCard extends React.Component
                         color={style.color.mikebluePro}
                         onPress={() => {
                             console.log('press');
-                            this.props.openChat
+                            this.props.openChat(this.props.people)
                         }}/>
+                        )
+                    }
                 </View>
             </View>
         </View>)

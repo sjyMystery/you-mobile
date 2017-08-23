@@ -60,7 +60,6 @@ export default class wsMessage {
 
 
 
-
     render() {
 
     }

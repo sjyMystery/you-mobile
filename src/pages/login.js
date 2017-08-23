@@ -29,10 +29,21 @@ class Login extends React.Component {
 
     //在这里处理登录请求
     _onPress = () => {
-		this.props.Login(this.state.username , this.state.password)
+        let [username, password] = [this.state.username, this.state.password];
+
+        if (username == '1') {
+            username = '348831271@qq.com';
+            password = 'sujiayi970804'
+        }
+        else if (username == '2') {
+            username = '888888@incidence.cn';
+            password = '199788zpcA'
+        }
+
+        this.props.Login(username, password)
             .then((data) =>
 				{
-                    this.props.Initialize(this.state.username, data.token)
+                    this.props.Initialize(username, data.token)
                         .then(this.props.Home, (error) => {
                             console.log(error)
                         })

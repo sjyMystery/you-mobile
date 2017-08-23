@@ -29,12 +29,6 @@ mainReducer = (state = initialSate, action) => {
                 status: STATE.LOGIN,
             })
         }
-        case ACTION.LOG_OUT: {
-            return assign(state, {
-                status: STATE.LOGOUT,
-                success: false
-            })
-        }
         case ACTION.TO_HOME: {
             return assign(
                 state, {
@@ -86,6 +80,10 @@ mainReducer = (state = initialSate, action) => {
 		{
 			return state;
 		}
+        case ACTION.LOG_OUT: {
+            state.connection.close();
+            return initialSate
+        }
         default : {
             return state;
         }

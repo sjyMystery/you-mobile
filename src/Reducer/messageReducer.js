@@ -75,7 +75,7 @@ messageReducer = (state = initialMessageState , action) =>
         }
 
         case ACTION.LOG_OUT: {
-            return {};
+            return initialMessageState
         }
 		default:
 		{

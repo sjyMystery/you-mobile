@@ -76,7 +76,17 @@ export default class chatMessage extends wsMessage {
     };
 
     onClose = () => {
+        console.log('on close called')
+    };
 
+    close = () => {
+        try {
+            this.ws.close();
+            console.log("close")
+        }
+        catch (e) {
+            console.log(e)
+        }
     };
 
 
