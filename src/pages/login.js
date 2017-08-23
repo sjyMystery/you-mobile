@@ -32,10 +32,10 @@ class Login extends React.Component {
 		this.props.Login(this.state.username , this.state.password)
             .then((data) =>
 				{
-                    this.props.Initialize(data.username, data.token).then(this.props.Home, (error) => {
-                        console.log(error)
-                        //初始化失败
-                    });
+                    this.props.Initialize(this.state.username, data.token)
+                        .then(this.props.Home, (error) => {
+                            console.log(error)
+                        })
                 }, (error) =>
 				{
 					//登录失败的提示

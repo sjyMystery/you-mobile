@@ -1,8 +1,8 @@
 import * as TYPES from './types'
 import * as contact from './contactAct'
 import {output_error} from './mainAct'
-export scanQRCode = (data) ->
-  (dispatch) ->
+export scanQRCode = (data) =>
+  (dispatch) =>
     try
       res=JSON.parse(data)
       switch res.type

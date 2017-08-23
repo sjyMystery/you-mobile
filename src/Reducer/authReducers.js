@@ -57,11 +57,7 @@ const loginReducer = (state=initialLoginState,action)=>{
         }
         case Actions.LOG_OUT:
         {
-            return assign(state,{
-                http_login: false,
-                token:null,
-                username:null
-            })
+            return initialLoginState
         }
         default:
         {

@@ -23,6 +23,9 @@ const contactReducer = (state = initialContactState, action) => {
         case Actions.GET_QRCODE:{
             return assign(state,{qr_token:action.qr_token})
         }
+        case Actions.LOG_OUT: {
+            return initialContactState
+        }
         default: {
             return state
         }

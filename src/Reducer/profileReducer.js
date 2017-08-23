@@ -12,12 +12,12 @@ const updateHomeProfile = (state, home) => {
 };
 
 const editProfile = (state,item,value) =>{
-    let new_home_profile=Object.assign({},state.home)
-    new_home_profile[item]=value
-    let a=assign(state,{home:new_home_profile})
-    console.log("editprofile",a)
+    let new_home_profile = Object.assign({}, state.home);
+    new_home_profile[item] = value;
+    let a = assign(state, {home: new_home_profile});
+    console.log("editprofile", a);
     return a
-}
+};
 
 const ProfileReducer = (state = initialProfileState, action) => {
     switch (action.type) {
@@ -27,6 +27,9 @@ const ProfileReducer = (state = initialProfileState, action) => {
         }
         case Actions.EDIT_PROFILE:{
             return editProfile(state,action.item,action.value)
+        }
+        case Actions.LOG_OUT: {
+            return initialProfileState
         }
         default: {
             return state

@@ -5,38 +5,38 @@ import csrf from './csrf';
 
 import fetch_factory from './fetch_factory';
 
-export var http_login = function(username, token) {
-  return new Promise(function(reslove, reject) {
+export var http_login = (username, token) => {
+  return new Promise((resolve, reject) => {
     return fetch_factory('/auth/token_login', 'POST', {
       username: username,
       token: token
-    }).then(function(data) {
+    }).then((data) => {
       if (data['status'] === 1) {
-        return reslove();
+        return resolve();
       } else {
         return reject({
           error: codes.error.verify_id_failed,
           message: "身份验证失败"
         });
       }
-    }, function(error) {
+    }, (error) => {
       return reject(error);
     });
   });
 };
 
-export var login = function(username, password) {
-  return new Promise(function(reslove, reject) {
+export var login = (username, password) => {
+  return new Promise((resolve, reject) => {
     return fetch_factory('/auth/login', 'POST', {
       username: username,
       password: password
-    }).then(function(data) {
+    }).then((data) => {
       if (data['status'] === 1) {
-        return reslove(data);
+        return resolve(data);
       } else {
         return reject(data);
       }
-    }, function(error) {
+    }, (error) => {
       return reject(error);
     });
   });

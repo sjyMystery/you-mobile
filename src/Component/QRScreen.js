@@ -14,7 +14,8 @@ import { BarCodeScanner } from 'expo';
 import { throttle } from 'lodash';
 
 import * as style from '../style';
-let Layout = {window:style.device}
+
+let Layout = {window: style.device};
 
 export default class BarCodeScreen extends React.Component {
     static route = {
@@ -86,16 +87,8 @@ export default class BarCodeScreen extends React.Component {
         );
     }
 
-    _handleBarCodeRead = throttle(({ data: data }) => {
-        this.setState({ scannerIsVisible: false }, () => {
-            if (this._isMounted) {
-                this.props.submit(data)
-            }
-        });
-    }, 1000);
-
-    _submit= (data: string) => {
-        this.props.back()
+    _submit = (data) => {
+        this.props.back();
 
         // note(brentvatne): Give the modal a bit of time to dismiss on Android
         setTimeout(() => {
@@ -110,6 +103,13 @@ export default class BarCodeScreen extends React.Component {
             }
         }, Platform.OS === 'android' ? 500 : 16);
     };
+    _handleBarCodeRead = throttle(({data: data}) => {
+        this.setState({scannerIsVisible: false}, () => {
+            if (this._isMounted) {
+                this._submit(data)
+            }
+        });
+    }, 1000);
 
     _handlePressCancel = () => {
         this.props.back()

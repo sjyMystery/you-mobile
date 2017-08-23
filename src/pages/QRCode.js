@@ -14,17 +14,26 @@ myPage = class QRCode extends React.Component {
     timer: Object;
 
     onPop=()=>{
-        clearInterval(this.timer)
+        clearInterval(this.timer);
         this.props.pop()
-    }
-    componentWillMount=()=>{
-        this.timer=setInterval(
-            ()=>this.props.get_qr_token(),
-            1000*60*5)
-    }
+    };
+    componentWillMount = () => {
+        this.props.get_qr_token()
+            .then(
+                (data) => {
+                    console.log(11);
+                    this.timer = setInterval(
+                        this.props.get_qr_token,
+                        1000 * 60 * 5
+                    )
+                },
+                () => {
+                }
+            )
+    };
     componentWillUnMount=()=>{
         clearInterval(this.timer)
-    }
+    };
 
     render() {
         return (<View style={{justifyContent:'flex-start',flex:1}}>

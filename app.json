@@ -3,6 +3,7 @@
     "sdkVersion": "19.0.0",
     "privacy": "unlisted",
     "name": "you",
-    "icon": "assets/img/logo1.png"
+    "icon": "assets/img/logo1.png",
+    "slug": "test1"
   }
 }

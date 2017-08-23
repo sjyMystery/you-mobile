@@ -13,7 +13,8 @@ myComponent = class qrPlayer extends React.Component {
 
 
     render() {
-        let value=JSON.stringify({type:'add_contact',token:this.props.data})
+        console.log(this.props.data);
+        let value = JSON.stringify({type: 'add_contact', token: this.props.data});
         return (<View>
             <KeepAwake/>
             <QRCode
