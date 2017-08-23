@@ -16,6 +16,8 @@ const navigator = Actions.create(
         <Scene key={Names.QRSCANNER} component={Pages.QRScanner}/>
         <Scene key={Names.PROFILE} component={Pages.Profile}/>
 		<Scene key={Names.PROFILE_EDIT} component={Pages.ProfileEdit}/>
+		<Scene key={Names.QRCODE} component={Pages.QRCode}/>
+		<Scene key={Names.WEB_PAGE} component={Pages.WebPage}/>
 	</Scene>);
 
 export default navigator

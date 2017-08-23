@@ -27,11 +27,17 @@ class SideBar extends React.Component
 {
 
 	datas = [
-        ,
         {
             name: "资料",
             action: Actions.to_profile,
             icon_name: "id-card",
+            icon_type: "font-awesome",
+            bg: "#C5F442"
+        },
+        {
+            name: "登出",
+            action: Actions.auth.logout,
+            icon_name: "arrow-left",
             icon_type: "font-awesome",
             bg: "#C5F442"
         }

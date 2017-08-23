@@ -1,9 +1,10 @@
 import React from 'react'
 import {QRScreen,Page} from '../Component'
 import {bindActionCreators} from 'redux'
+import {scanQRCode,pop} from '../Actions'
 class QRScanner extends React.Component {
     render = () => {
-        return <QRScreen/>
+        return <QRScreen {...this.props}/>
     }
 
     constructor() {
@@ -14,8 +15,8 @@ selectProps = (state) => {
     return {}
 };
 selectActions = (dispatch) => {
-    return bindActionCreators({}, dispatch)
+    return bindActionCreators({submit:scanQRCode,back:pop}, dispatch)
 };
 
 
-export default Page.WithHeaderNav(selectProps,selectActions,QRScanner);
+export default Page.Pure(selectProps,selectActions,QRScanner);

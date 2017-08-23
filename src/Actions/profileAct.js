@@ -12,7 +12,6 @@ export const editProfile = (item,value) =>{
             net.profile.edit(item,value).then(
                 (data)=>{
                     resolve(data)
-                    console.log('edit profile:',item,value)
                     dispatch({type:TYPES.EDIT_PROFILE,item:item,value:value})
                 },
                 reject
@@ -21,3 +20,4 @@ export const editProfile = (item,value) =>{
         return p
     }
 }
+

@@ -2,7 +2,6 @@
 import {Page} from '../Component'
 import React from 'react'
 import {bindActionCreators} from 'redux'
-import View from 'react-native'
 import {ProfilePlayer} from '../Component'
 import * as Actions from '../Actions'
 
@@ -19,7 +18,8 @@ selectProps = (state) => {
 };
 selectActions = (dispatch) => {
     return bindActionCreators({
-        edit:Actions.to_profile_edit
+        edit:Actions.to_profile_edit,
+        show_qrcode:Actions.to_qrcode
     }, dispatch)
 };
 

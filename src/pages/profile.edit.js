@@ -90,7 +90,6 @@ myPage = class ProfileEdit extends React.Component {
                         title={this.props.item_name}
                         pop={this.props.pop}
                         onPressRight={this.onPressRight}/>
-
             <View style={{height:20}}/>
 
             {input}

@@ -1,6 +1,7 @@
 //This file gives an example for creating a component
+//This file gives an example for creating a component
 import React from 'react'
-import View from 'react-native'
+import {View} from 'react-native'
 
 myComponent = class Template extends React.Component {
     constructor(props) {

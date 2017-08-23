@@ -1,6 +1,6 @@
 import * as TYPES from './types'
 import * as Route from '../routes'
-
+import {Alert} from 'react-native'
 export const to_chatroom    = () =>
 {
 	return dispatch =>
@@ -40,7 +40,7 @@ export const to_login =()=>{
 export const to_qrscanner = () => {
     return dispatch => {
     	console.log('test')
-        Route.Push(Route.QRSCANNER,{title:'扫描二维码'});
+        Route.Push(Route.QRSCANNER);
         return dispatch({type: TYPES.TO_QRSCANNER})
     }
 };
@@ -58,13 +58,34 @@ export const to_profile_edit = (item,name,value='',type='text') =>{
 		return dispatch({type:TYPES.TO_PROFILE_EDIT})
 	}
 }
-
+export const to_qrcode = () =>{
+	return dispatch=>{
+		Route.Push(Route.QRCODE)
+		return dispatch({type:TYPES.TO_QRCODE})
+	}
+}
+export const to_webpage_url = (url)=>{
+	return dispatch=>{
+		Route.Push(Route.WEB_PAGE,{url:url})
+		return dispatch({type:TYPES.TO_WEBPAGE})
+	}
+}
+export const to_webpage_html =(html)=>{
+	return dispatch=>{
+		Route.Push(Route.WEB_PAGE,{html:html})
+		return dispatch({type:TYPES.TO_WEBPAGE})
+	}
+}
 export const pop =()=> {
 	return dispatch=>{
-		console.log('pop')
 		Route.Pop()
 		return dispatch({type:TYPES.ROUTE_POP})
 	}
 }
 
-
+export const output_error = data => {
+	return dispatch=> {
+        Alert.alert(JSON.stringify(data))
+		return dispatch({type:TYPES.OUTPUT_ERROR})
+    }
+}

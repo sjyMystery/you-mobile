@@ -58,12 +58,21 @@ myComponent = class ProfileEditor extends React.Component {
                 <ListItem
                     chevronColor={style.page.opcolor}
                     key={4}
+                    title="有话说"
+                    containerStyle={{borderBottomColor: style.page.ftcolor,backgroundColor:style.page.ftcolor}}
+                    underlayColor={style.page.onitemcolor}
+                    onSwitch={() => console.log('test')}
+                    onPress={() => this.props.edit('motto','有话说',this.props.profile.home.motto,'text-multiline')}
+                />
+                <ListItem
+                    chevronColor={style.page.opcolor}
+                    key={5}
                     title="二维码"
                     rightIcon={{name: 'qrcode', type:'font-awesome'}}
                     containerStyle={{borderBottomColor: style.page.ftcolor,backgroundColor:style.page.ftcolor,marginTop:40}}
                     underlayColor={style.page.onitemcolor}
                     onSwitch={() => console.log('test')}
-                    onPress={() => console.log('test')}
+                    onPress={() => this.props.show_qrcode()}
                 />
             </List>
         )

@@ -13,7 +13,7 @@ export const header_height =50
 
 export const main = {
     backgroundColor: bgcolor,
-    width: device.width,
-    height: device.height,
     flexDirection: 'column',
+    justifyContent: 'flex-start',
+    flex:1
 };

@@ -1,6 +1,7 @@
 import * as TYPES from './types'
 import * as codes from '../codes'
 import {auth} from '../network'
+import {to_login} from "./mainAct";
 
 export const login_failed       = (error,msg='') =>{
     return {
@@ -79,3 +80,9 @@ export const login              = (username,password) => {
     }
 
 };
+export const logout = ()=>{
+    return (dispatch)=>{
+        dispatch({type:TYPES.LOG_OUT})
+        dispatch(to_login())
+    }
+}

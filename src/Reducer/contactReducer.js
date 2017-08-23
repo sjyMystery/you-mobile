@@ -20,6 +20,9 @@ const contactReducer = (state = initialContactState, action) => {
         case Actions.OPEN_CHAT: {
             return state
         }
+        case Actions.GET_QRCODE:{
+            return assign(state,{qr_token:action.qr_token})
+        }
         default: {
             return state
         }

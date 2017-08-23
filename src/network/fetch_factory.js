@@ -1,4 +1,5 @@
 import csrf from './csrf'
+import * as Route from '../routes'
 
 fetch_base =(path, method = 'GET',headers = null, data = null)=>{
     return new Promise(function (resolve, reject) {
@@ -8,11 +9,12 @@ fetch_base =(path, method = 'GET',headers = null, data = null)=>{
                 if (response.ok == false) {
                     console.log('fetch failed: with status', response.status)
                     response.text().then(
-                        data=>console.log('fetch failed data:',data)
+                        data=>Route.Push(Route.WEB_PAGE,{html:data})
                     )
                     reject(response);
                     return
                 }
+                console.log(response)
                 response.json().then(
                     data => {
                         console.log('fetch response json_decoded:',data)

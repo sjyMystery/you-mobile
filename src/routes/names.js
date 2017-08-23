@@ -6,3 +6,5 @@ export const LOAD         = "加载";
 export const QRSCANNER = "扫描二维码";
 export const PROFILE = "个人信息";
 export const PROFILE_EDIT ='编辑个人信息';
+export const QRCODE       = "二维码";
+export const WEB_PAGE     = '网页';

@@ -77,6 +77,7 @@ select = (state) => {
 selectDispatch = (dispatch) => {
     return bindActionCreators(
         {
+            logout: Actions.auth.logout,
             to_contacts: Actions.to_contacts,
             to_qrscanner: Actions.to_qrscanner
         }, dispatch
