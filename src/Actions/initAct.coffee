@@ -17,7 +17,7 @@ export init = (username, token) =>
       success: true
     )
     network.profile.get()
-      .then(
+    .then(
       (data) =>
         dispatch profile.updateHome data
         network.contact.getlist().then(

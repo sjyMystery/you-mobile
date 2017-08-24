@@ -8,7 +8,7 @@ import * as contact from './contactAct';
 import * as profile from './profileAct';
 
 import {
-    bindActionCreators
+  bindActionCreators
 } from 'redux';
 
 import * as msg from './messageAct';
@@ -16,33 +16,33 @@ import * as msg from './messageAct';
 import output_error from './mainAct';
 
 export var init = (username, token) => {
-    return (dispatch) => {
-        var connection;
-        connection = new network.chatMessage("incidence.cn", 9923, username, token, bindActionCreators(msg.push, dispatch));
-        dispatch({
-            type: TYPES.INIT,
-            connection: connection,
-            success: true
-        });
-        return network.profile.get().then((data) => {
-            dispatch(profile.updateHome(data));
-            return network.contact.getlist().then((data) => {
-                return dispatch(contact.updateList(data));
-            }, (error) => {
-                return reject(error);
-            });
-        }, (error) => {
-            return reject(error);
-        });
-    };
+  return (dispatch) => {
+    var connection;
+    connection = new network.chatMessage("incidence.cn", 9923, username, token, bindActionCreators(msg.push, dispatch));
+    dispatch({
+      type: TYPES.INIT,
+      connection: connection,
+      success: true
+    });
+    return network.profile.get().then((data) => {
+      dispatch(profile.updateHome(data));
+      return network.contact.getlist().then((data) => {
+        return dispatch(contact.updateList(data));
+      }, (error) => {
+        return reject(error);
+      });
+    }, (error) => {
+      return reject(error);
+    });
+  };
 };
 
 export var load = () => {
-    return (dispatch) => {
-        return dispatch({
-            type: TYPES.LOAD
-        });
-    };
+  return (dispatch) => {
+    return dispatch({
+      type: TYPES.LOAD
+    });
+  };
 };
 
 //# sourceMappingURL=initAct.js.map
