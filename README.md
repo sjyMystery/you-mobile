@@ -1,4 +1,4 @@
-由Galaxy Gates开发的一款即时通信程序
+由sjyMystery开发的一款即时通信程序
 
 基于React Native + PHP (laravel）
 
