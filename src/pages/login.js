@@ -31,15 +31,6 @@ class Login extends React.Component {
     _onPress = () => {
         let [username, password] = [this.state.username, this.state.password];
 
-        if (username == '1') {
-            username = '348831271@qq.com';
-            password = 'sujiayi970804'
-        }
-        else if (username == '2') {
-            username = '888888@incidence.cn';
-            password = '199788zpcA'
-        }
-
         this.props.Login(username, password)
             .then((data) =>
 				{
